@@ -1,0 +1,9 @@
+preset: laravel
+version: 8.1
+finder:
+  not-name:
+    - "*.blade.php"
+    - "_ide_helper.php"
+disabled:
+  - laravel_phpdoc_separation
+  - concat_without_spaces
