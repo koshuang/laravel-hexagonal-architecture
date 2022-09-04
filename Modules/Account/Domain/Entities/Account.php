@@ -2,10 +2,12 @@
 
 namespace Modules\Account\Domain\Entities;
 
+use Carbon\Carbon;
 use Modules\Account\Domain\ActivityWindow;
 use Modules\Account\Domain\ValueObjects\AccountId;
 use Modules\Account\Domain\ValueObjects\Money;
 use Modules\Account\Domain\ValueObjects\NullAccountId;
+use Modules\Account\Domain\ValueObjects\NullActivityId;
 
 class Account
 {
@@ -54,5 +56,38 @@ class Account
             $this->baselineBalance,
             $this->activityWindow->calculateBalance($this->id)
         );
+    }
+
+    /**
+     * Tries to withdraw a certain amount of money from this account.
+     * If successful, creates a new activity with a negative value.
+     * return true if the withdrawal was successful, false if not.
+     */
+    public function withdraw(Money $money, AccountId $targetAccountId): bool
+    {
+        if (! $this->mayWithdraw($money)) {
+            return false;
+        }
+
+        $withdrawal = new Activity(
+            new NullActivityId(),
+            $this->id,
+            $this->id,
+            $targetAccountId,
+            Carbon::now(),
+            $money,
+        );
+
+        $this->activityWindow->addActivity($withdrawal);
+
+        return true;
+    }
+
+    private function mayWithdraw(Money $money): bool
+    {
+        return Money::add(
+            $this->calculateBalance(),
+            $money->negate()
+        )->isPositiveOrZero();
     }
 }

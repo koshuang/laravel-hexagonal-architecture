@@ -25,6 +25,11 @@ class ActivityWindow
         $this->activities = collect($activities);
     }
 
+    public function addActivity(Activity $activity): void
+    {
+        $this->activities->push($activity);
+    }
+
     /**
      * The timestamp of the first activity within this window.
      */
