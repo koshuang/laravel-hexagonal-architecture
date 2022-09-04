@@ -26,6 +26,7 @@ class AccountServiceProvider extends ServiceProvider
     {
         $this->registerTranslations();
         $this->registerConfig();
+        $this->registerCommands();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Infrastructure/Adapter/Out/Persistence/Database/Migrations'));
     }
@@ -53,6 +54,12 @@ class AccountServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(
             module_path($this->moduleName, 'Config/config.php'), $this->moduleNameLower
         );
+    }
+
+    public function registerCommands()
+    {
+        $this->commands([
+        ]);
     }
 
     /**
