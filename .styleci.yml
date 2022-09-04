@@ -1,7 +1,5 @@
 preset: laravel
-
-enabled:
-    - ordered_use
-
-disabled:
-    - phpdoc_to_comment
+version: 8.1
+finder:
+  not-name:
+    - bad-syntax-strategy.php
