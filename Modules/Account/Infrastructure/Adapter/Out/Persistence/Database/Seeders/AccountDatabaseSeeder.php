@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Account\Database\Seeders;
+namespace Modules\Account\Infrastructure\Adapter\Out\Persistence\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
