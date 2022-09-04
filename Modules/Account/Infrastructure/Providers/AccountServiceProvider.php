@@ -2,6 +2,7 @@
 
 namespace Modules\Account\Infrastructure\Providers;
 
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 
 class AccountServiceProvider extends ServiceProvider
@@ -55,7 +56,7 @@ class AccountServiceProvider extends ServiceProvider
         );
     }
 
-    public function registerCommands()
+    public function registerCommands(): void
     {
         $this->commands([
         ]);
@@ -90,10 +91,10 @@ class AccountServiceProvider extends ServiceProvider
 
         if (is_dir($langPath)) {
             $this->loadTranslationsFrom($langPath, $this->moduleNameLower);
-            $this->loadJsonTranslationsFrom($langPath, $this->moduleNameLower);
+            $this->loadJsonTranslationsFrom($langPath);
         } else {
             $this->loadTranslationsFrom(module_path($this->moduleName, 'Infrastructure/Adapter/In/Web/Resources/lang'), $this->moduleNameLower);
-            $this->loadJsonTranslationsFrom(module_path($this->moduleName, 'Infrastructure/Adapter/In/Web/Resources/lang'), $this->moduleNameLower);
+            $this->loadJsonTranslationsFrom(module_path($this->moduleName, 'Infrastructure/Adapter/In/Web/Resources/lang'));
         }
     }
 
@@ -110,7 +111,7 @@ class AccountServiceProvider extends ServiceProvider
     private function getPublishableViewPaths(): array
     {
         $paths = [];
-        foreach (\Config::get('view.paths') as $path) {
+        foreach (Config::get('view.paths') as $path) {
             if (is_dir($path.'/modules/'.$this->moduleNameLower)) {
                 $paths[] = $path.'/modules/'.$this->moduleNameLower;
             }
