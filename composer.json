@@ -1,5 +1,5 @@
 {
-    "name": "laravel/laravel",
+    "name": "koshuang/laravel-hexagonal-architecture",
     "type": "project",
     "description": "The Laravel Framework.",
     "keywords": [
