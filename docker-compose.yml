@@ -1,0 +1,98 @@
+version: '3.4'
+
+services:
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: php-dev
+    volumes:
+      - ./:/var/www/html
+    working_dir: /var/www/html
+    ports:
+      - 8000:8000
+    links:
+      - db
+      - redis
+      - elasticsearch
+    depends_on:
+      - db
+      - redis
+      - elasticsearch
+    command:
+      >
+        bash -i -c -e
+        "
+        composer install;
+        php artisan migrate;
+        php artisan serve --host 0.0.0.0
+        "
+
+  node:
+    image: node:12.15.0
+    ports:
+      - 8080:8080
+    volumes:
+      - ./:/var/www/html
+    working_dir: /var/www/html
+    command:
+      >
+        bash -i -c -e
+        "
+        yarn install;
+        yarn dev;
+        "
+
+  db:
+    image: mysql:8.0 # or mariadb
+    ports:
+      - "${DB_PORT}:3306"
+    volumes:
+      - data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ${DB_DATABASE}
+    command:
+      --default-authentication-plugin=mysql_native_password
+    healthcheck:
+      test: "exit 0"
+
+  redis:
+    image:
+      redis:5.0.4
+    ports:
+      - 6379:6379
+    healthcheck:
+      test: "exit 0"
+
+  phpmyadmin:
+    image:
+      phpmyadmin/phpmyadmin:latest
+    links:
+      - db
+    ports:
+      - "${PHP_MYADMIN_PORT}:80"
+
+  elasticsearch:
+    image:
+      docker.elastic.co/elasticsearch/elasticsearch:7.7.0
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+    environment:
+      - cluster.name=group-project-test-cluster
+      - cluster.routing.allocation.disk.watermark.low=30mb
+      - cluster.routing.allocation.disk.watermark.high=20mb
+      - cluster.routing.allocation.disk.watermark.flood_stage=10mb
+      - cluster.info.update.interval=1m
+      - xpack.security.enabled=false
+      - discovery.type=single-node
+    ports:
+      - 9200:9200
+    healthcheck:
+      test: ["CMD", "curl", "${SCOUT_ELASTIC_HOST}"]
+      interval: 60s
+
+
+volumes:
+  data: {}
+  esdata: {}
