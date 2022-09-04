@@ -1,0 +1,7 @@
+preset: laravel
+
+enabled:
+    - ordered_use
+
+disabled:
+    - phpdoc_to_comment
