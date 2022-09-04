@@ -93,4 +93,32 @@ class AccountTest extends TestCase
         $this->assertEquals(2, $account->activityWindow->activities->count());
         $this->assertEquals(Money::of(1555), $account->calculateBalance());
     }
+
+    /**
+     * @test
+     */
+    public function depositSuccess(): void
+    {
+        $accountId = new AccountId(1);
+        $account = (new AccountBuilder())
+            ->withAccountId($accountId)
+            ->withBaselineBalance(Money::of(555))
+            ->withActivityWindow(new ActivityWindow(
+                ActivityTestData::defaultActivity()
+                    ->withTargetAccount($accountId)
+                    ->withMoney(Money::of(999))
+                    ->build(),
+                ActivityTestData::defaultActivity()
+                    ->withTargetAccount($accountId)
+                    ->withMoney(Money::of(1))
+                    ->build(),
+            ))
+            ->build();
+
+        $success = $account->deposit(Money::of(445), new AccountId(99));
+
+        $this->assertTrue($success);
+        $this->assertEquals(3, $account->activityWindow->activities->count());
+        $this->assertEquals(Money::of(2000), $account->calculateBalance());
+    }
 }
