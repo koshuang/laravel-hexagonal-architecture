@@ -2,8 +2,8 @@
 
 namespace Modules\Account\Infrastructure\Adapter\Out\Persistence\Seeders;
 
-use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Seeder;
 
 class AccountDatabaseSeeder extends Seeder
 {
