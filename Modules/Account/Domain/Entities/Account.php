@@ -83,6 +83,27 @@ class Account
         return true;
     }
 
+    /**
+     * Tries to deposit a certain amount of money to this account.
+     * If successful, creates a new activity with a positive value.
+     * return true if the deposit was successful, false if not.
+     */
+    public function deposit(Money $money, AccountId $sourceAccountId): bool
+    {
+        $deposit = new Activity(
+            new NullActivityId(),
+            $this->id,
+            $sourceAccountId,
+            $this->id,
+            Carbon::now(),
+            $money,
+        );
+
+        $this->activityWindow->addActivity($deposit);
+
+        return true;
+    }
+
     private function mayWithdraw(Money $money): bool
     {
         return Money::add(
