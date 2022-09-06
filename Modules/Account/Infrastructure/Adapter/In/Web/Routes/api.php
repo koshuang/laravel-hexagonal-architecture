@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Modules\Account\Infrastructure\Adapter\In\Web\Http\Controllers\SendMoneyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/account', function (Request $request) {
-    return $request->user();
-});
+Route::post('/accounts/send/{sourceAccountId}/{targetAccountId}/{amount}', [
+    SendMoneyController::class, 'sendMoney',
+]);
