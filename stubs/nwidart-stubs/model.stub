@@ -4,15 +4,16 @@ namespace $NAMESPACE$;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use $MODULE_NAMESPACE$\$MODULE$\Infrastructure\Adapter\Out\Persistence\Factories\$NAME$ModelFactory;
 
-class $CLASS$ extends Model
+class $CLASS$Model extends Model
 {
     use HasFactory;
 
-    protected $fillable = $FILLABLE$;
-    
-    protected static function newFactory()
+    protected $guarded = [];
+
+    protected static function newFactory(): $NAME$ModelFactory
     {
-        return \$MODULE_NAMESPACE$\$MODULE$\Database\factories\$NAME$Factory::new();
+        return $NAME$ModelFactory::new();
     }
 }
