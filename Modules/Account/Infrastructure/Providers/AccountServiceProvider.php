@@ -28,7 +28,7 @@ class AccountServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerCommands();
         $this->registerViews();
-        $this->loadMigrationsFrom(module_path($this->moduleName, 'Infrastructure/Adapter/Out/Persistence/Database/Migrations'));
+        $this->loadMigrationsFrom(module_path($this->moduleName, 'Infrastructure/Adapter/Out/Persistence/Migrations'));
     }
 
     /**
