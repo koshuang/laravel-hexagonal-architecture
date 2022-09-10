@@ -5,8 +5,10 @@ namespace Modules\Account\Infrastructure\Providers;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
 use Modules\Account\Application\Port\In\SendMoneyUseCase;
+use Modules\Account\Application\Port\Out\AccountLock;
 use Modules\Account\Application\Port\Out\LoadAccountPort;
 use Modules\Account\Application\Port\Out\UpdateAccountStatePort;
+use Modules\Account\Application\Services\NoOpAccountLock;
 use Modules\Account\Application\Services\SendMoneyService;
 use Modules\Account\Infrastructure\Adapter\Out\Persistence\AccountPersistenceAdapter;
 
@@ -40,5 +42,6 @@ class DIServiceProvider extends ServiceProvider
     {
         App::instance(LoadAccountPort::class, app(AccountPersistenceAdapter::class));
         App::instance(UpdateAccountStatePort::class, app(AccountPersistenceAdapter::class));
+        App::instance(AccountLock::class, app(NoOpAccountLock::class));
     }
 }
