@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Modules\Account\Application\Port\Out\LoadAccountPort;
 use Modules\Account\Application\Port\Out\UpdateAccountStatePort;
 use Modules\Account\Domain\Entities\Account;
+use Modules\Account\Domain\Entities\Activity;
 use Modules\Account\Domain\ValueObjects\AccountId;
 use Modules\Account\Infrastructure\Adapter\Out\Persistence\Models\AccountModel;
 use Modules\Account\Infrastructure\Adapter\Out\Persistence\Models\ActivityModel;
@@ -49,5 +50,12 @@ class AccountPersistenceAdapter implements LoadAccountPort, UpdateAccountStatePo
 
     public function updateActivities(Account $account): void
     {
+        $account->activityWindow->activities->each(function (Activity $activity) {
+            $attributes = collect($this->accountMapper->mapToModel($activity)->toArray())->except(['id']);
+            ActivityModel::updateOrCreate(
+                $activity->id->isNull() ? [] : ['id' => $activity->id->value],
+                $attributes->toArray(),
+            );
+        });
     }
 }
