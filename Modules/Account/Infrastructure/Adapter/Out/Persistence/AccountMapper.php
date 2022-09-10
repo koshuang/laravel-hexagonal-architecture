@@ -52,4 +52,16 @@ class AccountMapper
 
         return new ActivityWindow(...$activityEntities);
     }
+
+    public function mapToModel(Activity $activity): ActivityModel
+    {
+        return new ActivityModel([
+            'id' => $activity->id->isNull() ? null : $activity->id->value,
+            'created_at' => $activity->timestamp,
+            'owner_account_id' => $activity->ownerAccountId->value,
+            'source_account_id' => $activity->sourceAccountId->value,
+            'target_account_id' => $activity->targetAccountId->value,
+            'amount' => $activity->money->amount,
+        ]);
+    }
 }
