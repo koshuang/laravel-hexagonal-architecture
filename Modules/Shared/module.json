@@ -4,8 +4,6 @@
     "description": "",
     "keywords": [],
     "priority": 0,
-    "providers": [
-        "Modules\\Shared\\Infrastructure\\Providers\\SharedServiceProvider"
-    ],
+    "providers": [],
     "files": []
 }

@@ -1,5 +1,5 @@
 {
-    "name": "nwidart/shared",
+    "name": "laravel-hexagonal-architecture/shared",
     "description": "",
     "authors": [
         {
@@ -10,9 +10,7 @@
     "extra": {
         "laravel": {
             "providers": [],
-            "aliases": {
-
-            }
+            "aliases": {}
         }
     },
     "autoload": {

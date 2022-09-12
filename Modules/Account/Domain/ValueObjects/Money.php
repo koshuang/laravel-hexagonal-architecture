@@ -2,7 +2,9 @@
 
 namespace Modules\Account\Domain\ValueObjects;
 
-class Money
+use Modules\Shared\Domain\Contracts\ValueObject;
+
+class Money extends ValueObject
 {
     public function __construct(
         public int $amount,

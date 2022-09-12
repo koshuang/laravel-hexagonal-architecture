@@ -6,7 +6,7 @@ class NullActivityId extends ActivityId
 {
     public function __construct()
     {
-        $this->value = -1;
+        parent::__construct(-1);
     }
 
     public function isNull(): bool

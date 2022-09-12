@@ -118,9 +118,9 @@ return [
             'filter' => ['path' => 'Infrastructure/Adapter/In/Web/Http/Middleware', 'generate' => true],
             'request' => ['path' => 'Infrastructure/Adapter/In/Web/Http/Requests', 'generate' => true],
             'provider' => ['path' => 'Infrastructure/Providers', 'generate' => true],
-            'assets' => ['path' => 'Infrastructure/Adapter/In/Web/HttpResources/assets', 'generate' => true],
-            'lang' => ['path' => 'Infrastructure/Adapter/In/Web/HttpResources/lang', 'generate' => true],
-            'views' => ['path' => 'Infrastructure/Adapter/In/Web/HttpResources/views', 'generate' => true],
+            'assets' => ['path' => 'Infrastructure/Adapter/In/Web/Http/Resources/assets', 'generate' => true],
+            'lang' => ['path' => 'Infrastructure/Adapter/In/Web/Http/Resources/lang', 'generate' => true],
+            'views' => ['path' => 'Infrastructure/Adapter/In/Web/Http/Resources/views', 'generate' => true],
             'test' => ['path' => 'Tests/Unit', 'generate' => true],
             'test-feature' => ['path' => 'Tests/Feature', 'generate' => true],
             'repository' => ['path' => 'Repositories', 'generate' => false],
@@ -221,7 +221,7 @@ return [
     */
 
     'composer' => [
-        'vendor' => 'nwidart',
+        'vendor' => 'laravel-hexagonal-architecture',
         'author' => [
             'name' => 'Kos Huang',
             'email' => 'koshuang@gmail.com',
