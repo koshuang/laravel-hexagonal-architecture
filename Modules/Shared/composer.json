@@ -1,0 +1,21 @@
+{
+    "name": "laravel-hexagonal-architecture/shared",
+    "description": "",
+    "authors": [
+        {
+            "name": "Kos Huang",
+            "email": "koshuang@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {}
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Shared\\": ""
+        }
+    }
+}
