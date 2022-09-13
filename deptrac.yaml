@@ -1,0 +1,56 @@
+# deptrac.yaml
+deptrac:
+  paths:
+    - ./Modules
+  exclude_files:
+    # - '#.*Test.*#'
+  layers:
+    -
+      name: Infrastructure
+      collectors:
+        -
+          type: className
+          value: .*Infrastructure.*
+    -
+      name: Application
+      collectors:
+        -
+          type: className
+          value: .*Application.*
+    -
+      name: Domain
+      collectors:
+        -
+          type: className
+          value: .*Domain.*
+    -
+      name: Illuminate
+      collectors:
+        -
+          type: className
+          value: .*Illuminate\\(?!Support).*
+    -
+      name: IlluminateSupportFacade
+      collectors:
+        -
+          type: className
+          value: Illuminate\\Support\\Facades\\.*
+    -
+      name: IlluminateSupportExcludeFacade
+      collectors:
+        -
+          type: className
+          value: Illuminate\\Support\\(?!Facades).*
+  ruleset:
+    Infrastructure:
+      - Application
+      - Domain
+      - Illuminate
+      - IlluminateSupport
+      - IlluminateSupportFacade
+      - IlluminateSupportExcludeFacade
+    Application:
+      - Domain
+      - IlluminateSupportExcludeFacade
+    Domain:
+      - IlluminateSupportExcludeFacade
