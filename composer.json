@@ -24,6 +24,7 @@
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^6.1",
         "nunomaduro/larastan": "^2.0",
+        "nunomaduro/phpinsights": "^2.6",
         "phpstan/extension-installer": "^1.1",
         "phpstan/phpstan-mockery": "^1.1",
         "phpunit/phpunit": "^9.5.10",
@@ -68,7 +69,8 @@
         "sort-packages": true,
         "allow-plugins": {
             "pestphp/pest-plugin": true,
-            "phpstan/extension-installer": true
+            "phpstan/extension-installer": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
         }
     },
     "minimum-stability": "dev",
