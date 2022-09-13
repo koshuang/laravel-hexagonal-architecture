@@ -41,13 +41,13 @@ class AccountMapper
      */
     public function mapToActivityWindow(Collection $activityModels): ActivityWindow
     {
-        $activityEntities = $activityModels->map(fn (ActivityModel $activity) => new Activity(
-            new ActivityId($activity->id),
-            new AccountId($activity->owner_account_id),
-            new AccountId($activity->source_account_id),
-            new AccountId($activity->target_account_id),
-            Carbon::parse($activity->created_at),
-            Money::of($activity->amount),
+        $activityEntities = $activityModels->map(fn (ActivityModel $activityModel) => new Activity(
+            new ActivityId($activityModel->id),
+            new AccountId($activityModel->owner_account_id),
+            new AccountId($activityModel->source_account_id),
+            new AccountId($activityModel->target_account_id),
+            Carbon::parse($activityModel->created_at),
+            Money::of($activityModel->amount),
         ));
 
         return new ActivityWindow(...$activityEntities);

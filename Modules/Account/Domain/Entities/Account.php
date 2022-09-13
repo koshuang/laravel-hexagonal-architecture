@@ -8,14 +8,22 @@ use Modules\Account\Domain\ValueObjects\AccountId;
 use Modules\Account\Domain\ValueObjects\Money;
 use Modules\Account\Domain\ValueObjects\NullAccountId;
 use Modules\Account\Domain\ValueObjects\NullActivityId;
+use Modules\Shared\Domain\Contracts\AggregateRoot;
 
-class Account
+/**
+ * @extends AggregateRoot<AccountId>
+ *
+ * @property AccountId $id
+ */
+class Account extends AggregateRoot
 {
     public function __construct(
         /**
          * The unique ID of the account.
+         *
+         * @var AccountId
          */
-        public readonly AccountId $id,
+        public $id,
 
         /**
          * The baseline balance of the account. This was the balance of the account before the first

@@ -6,12 +6,21 @@ use Carbon\Carbon;
 use Modules\Account\Domain\ValueObjects\AccountId;
 use Modules\Account\Domain\ValueObjects\ActivityId;
 use Modules\Account\Domain\ValueObjects\Money;
+use Modules\Shared\Domain\Contracts\LocalEntity;
 
-class Activity
+/**
+ * @extends LocalEntity<ActivityId>
+ *
+ * @property ActivityId $id
+ */
+class Activity extends LocalEntity
 {
     public function __construct(
 
-        public readonly ActivityId $id,
+        /**
+         * @var ActivityId
+         */
+        public $id,
         /**
          * The account that owns this activity.
          */

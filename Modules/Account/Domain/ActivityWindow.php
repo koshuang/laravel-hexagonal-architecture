@@ -7,8 +7,9 @@ use Illuminate\Support\Collection;
 use Modules\Account\Domain\Entities\Activity;
 use Modules\Account\Domain\ValueObjects\AccountId;
 use Modules\Account\Domain\ValueObjects\Money;
+use Modules\Shared\Domain\Contracts\DomainObject;
 
-class ActivityWindow
+class ActivityWindow implements DomainObject
 {
     /**
      * The list of account activities within this window.
