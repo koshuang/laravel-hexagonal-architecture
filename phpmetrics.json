@@ -1,0 +1,38 @@
+{
+    "includes": ["Modules"],
+    "extensions": ["php", "php8"],
+    "report": {
+        "html": "reports/phpmetrics/report/",
+        "json": "reports/phpmetrics/report.json",
+        "violations": "reports/phpmetrics/violations.xml"
+    },
+    "groups": [
+        {
+            "name": "Domain",
+            "match": "!Domain!i"
+        },
+        {
+            "name": "Application",
+            "match": "!Application!i"
+        },
+        {
+            "name": "Infrastructure",
+            "match": "!Infrastructure!i"
+        }
+    ],
+    "plugins": {
+        "git": {
+            "binary": "git"
+        },
+        "junit": {
+            "report": "reports/junit.xml"
+        }
+    },
+    "searches": {
+        "Class with too many responsibilities": {
+            "type": "class",
+            "lcom": ">=7",
+            "failIfFound": true
+        }
+    }
+}
