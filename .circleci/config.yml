@@ -31,6 +31,15 @@ commands:
           name: Test
           command: |
             vendor/bin/phpunit -d memory_limit=386M
+            echo "Done" # In order to make CircleCI output Test Insight correctly
+      - run:
+          name: Do PHP Metrics
+          command: |
+            vendor/bin/phpmetrics --config=phpmetrics.json
+      - store_test_results:
+          path: ./reports/
+      - store_artifacts:
+          path: ./reports/
 
 jobs:
   run_test:
