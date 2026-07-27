@@ -4,53 +4,71 @@ deptrac:
     - ./Modules
   exclude_files:
     # - '#.*Test.*#'
+  ignore_uncovered_internal_classes: true
   layers:
     -
       name: Infrastructure
       collectors:
         -
-          type: className
-          value: .*Infrastructure.*
+          type: classLike
+          value: .*Modules\\Account\\Infrastructure\\.*
     -
       name: Application
       collectors:
         -
-          type: className
-          value: .*Application.*
+          type: classLike
+          value: .*Modules\\Account\\Application\\.*
     -
       name: Domain
       collectors:
         -
-          type: className
-          value: .*Domain.*
+          type: classLike
+          value: .*Modules\\Account\\Domain\\.*
+    -
+      name: Shared
+      collectors:
+        -
+          type: classLike
+          value: .*Modules\\Shared\\.*
     -
       name: Illuminate
       collectors:
         -
-          type: className
+          type: classLike
           value: .*Illuminate\\(?!Support).*
     -
       name: IlluminateSupportFacade
       collectors:
         -
-          type: className
-          value: Illuminate\\Support\\Facades\\.*
+          type: classLike
+          value: .*Illuminate\\Support\\Facades\\.*
     -
       name: IlluminateSupportExcludeFacade
       collectors:
         -
-          type: className
-          value: Illuminate\\Support\\(?!Facades).*
+          type: classLike
+          value: .*Illuminate\\Support\\(?!Facades).*
+    -
+      name: Carbon
+      collectors:
+        -
+          type: classLike
+          value: .*Carbon\\.*
   ruleset:
     Infrastructure:
       - Application
       - Domain
+      - Shared
       - Illuminate
-      - IlluminateSupport
       - IlluminateSupportFacade
       - IlluminateSupportExcludeFacade
+      - Carbon
     Application:
       - Domain
+      - Shared
       - IlluminateSupportExcludeFacade
+      - Carbon
     Domain:
+      - Shared
       - IlluminateSupportExcludeFacade
+      - Carbon

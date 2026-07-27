@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   laravel_lint_and_test:
@@ -34,6 +37,9 @@ jobs:
 
     - name: Run phpstan
       run: tools/scripts/phpstan-all-files.sh
+
+    - name: Run deptrac
+      run: composer deptrac
 
     - name: Run Laravel Tests
       run: composer test
