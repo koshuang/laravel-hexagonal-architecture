@@ -2,6 +2,4 @@
 
 namespace Modules\Shared\Domain\Contracts;
 
-interface DomainEvent extends DomainObject
-{
-}
+interface DomainEvent extends DomainObject {}

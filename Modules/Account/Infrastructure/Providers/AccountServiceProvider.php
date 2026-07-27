@@ -4,6 +4,7 @@ namespace Modules\Account\Infrastructure\Providers;
 
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
+use Override;
 
 class AccountServiceProvider extends ServiceProvider
 {
@@ -32,6 +33,7 @@ class AccountServiceProvider extends ServiceProvider
     /**
      * Register the service provider.
      */
+    #[Override]
     public function register()
     {
         $this->app->register(RouteServiceProvider::class);
@@ -40,8 +42,7 @@ class AccountServiceProvider extends ServiceProvider
 
     public function registerCommands(): void
     {
-        $this->commands([
-        ]);
+        $this->commands([]);
     }
 
     /**
@@ -81,6 +82,7 @@ class AccountServiceProvider extends ServiceProvider
      *
      * @return array<int, string>
      */
+    #[Override]
     public function provides(): array
     {
         return [];

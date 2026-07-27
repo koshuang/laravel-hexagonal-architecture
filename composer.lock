@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f949c983019299e7e2ffaa7cd6e5354a",
+    "content-hash": "9875ef19daa875cf98ddfa56b1f0db0e",
     "packages": [
         {
             "name": "brick/math",
@@ -6964,6 +6964,91 @@
             "time": "2022-02-04T12:51:07+00:00"
         },
         {
+            "name": "deptrac/deptrac",
+            "version": "4.7.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/deptrac/deptrac.git",
+                "reference": "de3303ae1e280b1e58552fef496074b4ee5b143b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/deptrac/deptrac/zipball/de3303ae1e280b1e58552fef496074b4ee5b143b",
+                "reference": "de3303ae1e280b1e58552fef496074b4ee5b143b",
+                "shasum": ""
+            },
+            "require": {
+                "composer/xdebug-handler": "^3.0",
+                "jetbrains/phpstorm-stubs": "2024.3 || 2025.3 || 2026.1",
+                "nikic/php-parser": "^5",
+                "php": "^8.2",
+                "phpdocumentor/graphviz": "^2.1",
+                "phpdocumentor/type-resolver": "^1.9.0 || ^2.0.0",
+                "phpstan/phpdoc-parser": "^1.5.0 || ^2.1.0",
+                "phpstan/phpstan": "^2.0",
+                "psr/container": "^2.0",
+                "psr/event-dispatcher": "^1.0",
+                "symfony/config": "^6.4 || ^7.4 || ^8.0",
+                "symfony/console": "^6.4 || ^7.4 || ^8.0",
+                "symfony/dependency-injection": "^6.4 || ^7.4 || ^8.0",
+                "symfony/event-dispatcher": "^6.4 || ^7.4 || ^8.0",
+                "symfony/event-dispatcher-contracts": "^3.4",
+                "symfony/filesystem": "^6.4 || ^7.4 || ^8.0",
+                "symfony/finder": "^6.4 || ^7.4 || ^8.0",
+                "symfony/yaml": "^6.4 || ^7.4 || ^8.0"
+            },
+            "require-dev": {
+                "bamarni/composer-bin-plugin": "^1.8",
+                "ergebnis/composer-normalize": "^2.45",
+                "ext-libxml": "*",
+                "symfony/stopwatch": "^6.4 || ^7.4 || ^8.0"
+            },
+            "suggest": {
+                "ext-dom": "For using the JUnit output formatter"
+            },
+            "bin": [
+                "deptrac"
+            ],
+            "type": "library",
+            "extra": {
+                "bamarni-bin": {
+                    "bin-links": false,
+                    "forward-command": true,
+                    "target-directory": "tools"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Deptrac\\Deptrac\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tim Glabisch"
+                },
+                {
+                    "name": "Simon Mönch"
+                },
+                {
+                    "name": "Denis Brumann"
+                }
+            ],
+            "description": "Deptrac is a static code analysis tool that helps to enforce rules for dependencies between software layers.",
+            "keywords": [
+                "dev",
+                "static analysis"
+            ],
+            "support": {
+                "issues": "https://github.com/deptrac/deptrac/issues",
+                "source": "https://github.com/deptrac/deptrac/tree/4.7.1"
+            },
+            "time": "2026-07-23T20:41:37+00:00"
+        },
+        {
             "name": "doctrine/deprecations",
             "version": "1.1.6",
             "source": {
@@ -7578,6 +7663,50 @@
                 "source": "https://github.com/Jean85/pretty-package-versions/tree/2.1.1"
             },
             "time": "2025-03-19T14:43:43+00:00"
+        },
+        {
+            "name": "jetbrains/phpstorm-stubs",
+            "version": "v2026.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JetBrains/phpstorm-stubs",
+                "reference": "2cdd054c4109dfb76667c9198bf9427606354243"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JetBrains/phpstorm-stubs/zipball/2cdd054c4109dfb76667c9198bf9427606354243",
+                "reference": "2cdd054c4109dfb76667c9198bf9427606354243",
+                "shasum": ""
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^v3.86",
+                "nikic/php-parser": "^v5.6",
+                "phpdocumentor/reflection-docblock": "^5.6",
+                "phpunit/phpunit": "^12.3"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "PhpStormStubsMap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "PHP runtime & extensions header files for PhpStorm",
+            "homepage": "https://www.jetbrains.com/phpstorm",
+            "keywords": [
+                "autocomplete",
+                "code",
+                "inference",
+                "inspection",
+                "jetbrains",
+                "phpstorm",
+                "stubs",
+                "type"
+            ],
+            "time": "2026-02-19T20:12:01+00:00"
         },
         {
             "name": "larastan/larastan",
@@ -8823,6 +8952,59 @@
             "time": "2024-03-27T12:14:49+00:00"
         },
         {
+            "name": "phpdocumentor/graphviz",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpDocumentor/GraphViz.git",
+                "reference": "115999dc7f31f2392645aa825a94a6b165e1cedf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpDocumentor/GraphViz/zipball/115999dc7f31f2392645aa825a94a6b165e1cedf",
+                "reference": "115999dc7f31f2392645aa825a94a6b165e1cedf",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2 || ^8.0"
+            },
+            "require-dev": {
+                "ext-simplexml": "*",
+                "mockery/mockery": "^1.2",
+                "phpstan/phpstan": "^0.12",
+                "phpunit/phpunit": "^8.2 || ^9.2",
+                "psalm/phar": "^4.15"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "phpDocumentor\\GraphViz\\": "src/phpDocumentor/GraphViz",
+                    "phpDocumentor\\GraphViz\\PHPStan\\": "./src/phpDocumentor/PHPStan"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mike van Riel",
+                    "email": "mike.vanriel@naenius.com"
+                }
+            ],
+            "description": "Wrapper for Graphviz",
+            "support": {
+                "issues": "https://github.com/phpDocumentor/GraphViz/issues",
+                "source": "https://github.com/phpDocumentor/GraphViz/tree/2.1.0"
+            },
+            "time": "2021-12-13T19:03:21+00:00"
+        },
+        {
             "name": "phpdocumentor/reflection-common",
             "version": "2.2.0",
             "source": {
@@ -9759,62 +9941,6 @@
                 "source": "https://github.com/php-fig/cache/tree/3.0.0"
             },
             "time": "2021-02-03T23:26:27+00:00"
-        },
-        {
-            "name": "qossmic/deptrac-shim",
-            "version": "1.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/qossmic/deptrac-shim.git",
-                "reference": "3179a2c4978654add865309e3c280ef3d60f0043"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/qossmic/deptrac-shim/zipball/3179a2c4978654add865309e3c280ef3d60f0043",
-                "reference": "3179a2c4978654add865309e3c280ef3d60f0043",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "ext-tokenizer": "*",
-                "ext-zlib": "*",
-                "php": "^8.1"
-            },
-            "replace": {
-                "qossmic/deptrac": "self.version"
-            },
-            "suggest": {
-                "ext-dom": "For using the JUnit output formatter"
-            },
-            "bin": [
-                "deptrac"
-            ],
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Tim Glabisch"
-                },
-                {
-                    "name": "Simon Mönch",
-                    "email": "simon.moench@qossmic.com"
-                },
-                {
-                    "name": "Denis Brumann",
-                    "email": "denis.brumann@qossmic.com",
-                    "role": "maintainer"
-                }
-            ],
-            "description": "deptrac phar distribution",
-            "support": {
-                "issues": "https://github.com/qossmic/deptrac-shim/issues",
-                "source": "https://github.com/qossmic/deptrac-shim/tree/1.0.2"
-            },
-            "abandoned": "qossmic/deptrac",
-            "time": "2022-12-02T11:47:53+00:00"
         },
         {
             "name": "react/cache",
@@ -12075,6 +12201,169 @@
                 }
             ],
             "time": "2026-06-05T06:23:12+00:00"
+        },
+        {
+            "name": "symfony/config",
+            "version": "v7.4.14",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/config.git",
+                "reference": "7b665e443381ea7c4db03eb03b4bf79ea2b020eb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/config/zipball/7b665e443381ea7c4db03eb03b4bf79ea2b020eb",
+                "reference": "7b665e443381ea7c4db03eb03b4bf79ea2b020eb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2",
+                "symfony/deprecation-contracts": "^2.5|^3",
+                "symfony/filesystem": "^7.1|^8.0",
+                "symfony/polyfill-ctype": "~1.8"
+            },
+            "conflict": {
+                "symfony/finder": "<6.4",
+                "symfony/service-contracts": "<2.5"
+            },
+            "require-dev": {
+                "symfony/event-dispatcher": "^6.4|^7.0|^8.0",
+                "symfony/finder": "^6.4|^7.0|^8.0",
+                "symfony/messenger": "^6.4|^7.0|^8.0",
+                "symfony/service-contracts": "^2.5|^3",
+                "symfony/yaml": "^6.4|^7.0|^8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Config\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Helps you find, load, combine, autofill and validate configuration values of any kind",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/config/tree/v7.4.14"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/nicolas-grekas",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2026-06-09T07:51:57+00:00"
+        },
+        {
+            "name": "symfony/dependency-injection",
+            "version": "v7.4.14",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/dependency-injection.git",
+                "reference": "2c8c64a33e2e6911579e1ff79a8e06c27d48d402"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/2c8c64a33e2e6911579e1ff79a8e06c27d48d402",
+                "reference": "2c8c64a33e2e6911579e1ff79a8e06c27d48d402",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2",
+                "psr/container": "^1.1|^2.0",
+                "symfony/deprecation-contracts": "^2.5|^3",
+                "symfony/service-contracts": "^3.6",
+                "symfony/var-exporter": "^6.4.20|^7.2.5|^8.0"
+            },
+            "conflict": {
+                "ext-psr": "<1.1|>=2",
+                "symfony/config": "<6.4",
+                "symfony/finder": "<6.4",
+                "symfony/yaml": "<6.4"
+            },
+            "provide": {
+                "psr/container-implementation": "1.1|2.0",
+                "symfony/service-implementation": "1.1|2.0|3.0"
+            },
+            "require-dev": {
+                "symfony/config": "^6.4|^7.0|^8.0",
+                "symfony/expression-language": "^6.4|^7.0|^8.0",
+                "symfony/yaml": "^6.4|^7.0|^8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\DependencyInjection\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Allows you to standardize and centralize the way objects are constructed in your application",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/dependency-injection/tree/v7.4.14"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/nicolas-grekas",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2026-06-24T07:41:05+00:00"
         },
         {
             "name": "symfony/filesystem",

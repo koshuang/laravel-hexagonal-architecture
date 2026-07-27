@@ -6,9 +6,11 @@ use Illuminate\Support\Str;
 use Nwidart\Modules\Commands\Make\FactoryMakeCommand as ParentFactoryMakeCommand;
 use Nwidart\Modules\Contracts\RepositoryInterface;
 use Nwidart\Modules\Support\Config\GenerateConfigReader;
+use Override;
 
 class FactoryMakeCommand extends ParentFactoryMakeCommand
 {
+    #[Override]
     protected function getDestinationFilePath(): string
     {
         $modules = $this->laravel->make(RepositoryInterface::class);

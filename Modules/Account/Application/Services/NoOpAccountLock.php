@@ -7,11 +7,7 @@ use Modules\Account\Domain\ValueObjects\AccountId;
 
 class NoOpAccountLock implements AccountLock
 {
-    public function lockAccount(AccountId $accountId): void
-    {
-    }
+    public function lockAccount(AccountId $accountId): void {}
 
-    public function releaseAccount(AccountId $accountId): void
-    {
-    }
+    public function releaseAccount(AccountId $accountId): void {}
 }

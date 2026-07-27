@@ -2,6 +2,8 @@
 
 namespace Modules\Account\Domain\ValueObjects;
 
+use Override;
+
 class NullAccountId extends AccountId
 {
     public function __construct()
@@ -9,6 +11,7 @@ class NullAccountId extends AccountId
         parent::__construct(-1);
     }
 
+    #[Override]
     public function isNull(): bool
     {
         return true;

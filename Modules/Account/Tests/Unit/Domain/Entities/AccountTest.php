@@ -12,6 +12,9 @@ use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
+/**
+ * @internal
+ */
 #[CoversNothing]
 class AccountTest extends TestCase
 {
@@ -43,7 +46,7 @@ class AccountTest extends TestCase
     public function withdrawal_succeeds(): void
     {
         $accountId = new AccountId(1);
-        $account = (new AccountBuilder())
+        $account = new AccountBuilder()
             ->withAccountId($accountId)
             ->withBaselineBalance(Money::of(555))
             ->withActivityWindow(new ActivityWindow(
@@ -69,7 +72,7 @@ class AccountTest extends TestCase
     public function withdrawal_failure(): void
     {
         $accountId = new AccountId(1);
-        $account = (new AccountBuilder())
+        $account = new AccountBuilder()
             ->withAccountId($accountId)
             ->withBaselineBalance(Money::of(555))
             ->withActivityWindow(new ActivityWindow(
@@ -95,7 +98,7 @@ class AccountTest extends TestCase
     public function deposit_success(): void
     {
         $accountId = new AccountId(1);
-        $account = (new AccountBuilder())
+        $account = new AccountBuilder()
             ->withAccountId($accountId)
             ->withBaselineBalance(Money::of(555))
             ->withActivityWindow(new ActivityWindow(

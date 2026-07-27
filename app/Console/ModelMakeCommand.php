@@ -7,14 +7,17 @@ use Nwidart\Modules\Commands\Make\ModelMakeCommand as ParentModelMakeCommand;
 use Nwidart\Modules\Contracts\RepositoryInterface;
 use Nwidart\Modules\Support\Config\GenerateConfigReader;
 use Symfony\Component\Console\Input\InputOption;
+use Override;
 
 class ModelMakeCommand extends ParentModelMakeCommand
 {
+    #[Override]
     public function handle(): int
     {
         return parent::handle();
     }
 
+    #[Override]
     protected function getDestinationFilePath(): string
     {
         $modules = $this->laravel->make(RepositoryInterface::class);
@@ -25,6 +28,7 @@ class ModelMakeCommand extends ParentModelMakeCommand
         return $path . $modelPath->getPath() . '/' . $this->getModelName() . 'Model.php';
     }
 
+    #[Override]
     protected function getOptions(): array
     {
         $options = parent::getOptions();
@@ -35,6 +39,7 @@ class ModelMakeCommand extends ParentModelMakeCommand
         ];
     }
 
+    #[Override]
     protected function handleOptionalFactoryOption(): void
     {
         if ($this->option('factory') === true) {

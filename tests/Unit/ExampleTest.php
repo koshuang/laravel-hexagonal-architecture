@@ -5,6 +5,9 @@ namespace Tests\Unit;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ */
 #[CoversNothing]
 class ExampleTest extends TestCase
 {

@@ -4,7 +4,6 @@ $finder = PhpCsFixer\Finder::create()
     ->in([
         __DIR__ . '/app',
         __DIR__ . '/tests',
-        __DIR__ . '/packages',
         __DIR__ . '/resources',
         __DIR__ . '/Modules',
     ])

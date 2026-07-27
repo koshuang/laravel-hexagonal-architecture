@@ -11,7 +11,7 @@ class AccountTestData
 {
     public static function defaultAccount(): AccountBuilder
     {
-        return (new AccountBuilder())
+        return new AccountBuilder()
             ->withAccountId(new AccountId(42))
             ->withBaselineBalance(Money::of(999))
             ->withActivityWindow(new ActivityWindow(

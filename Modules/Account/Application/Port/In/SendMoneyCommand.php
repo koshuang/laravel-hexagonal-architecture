@@ -13,6 +13,5 @@ class SendMoneyCommand
         public readonly AccountId $sourceAccountId,
         public readonly AccountId $targetAccountId,
         public readonly Money $money,
-    ) {
-    }
+    ) {}
 }

@@ -38,6 +38,7 @@ use Laravel\Sanctum\PersonalAccessToken;
 class User extends Authenticatable
 {
     use HasApiTokens;
+
     /** @use HasFactory<UserFactory> */
     use HasFactory;
     use Notifiable;

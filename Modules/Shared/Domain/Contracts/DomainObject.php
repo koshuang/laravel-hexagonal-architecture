@@ -2,6 +2,4 @@
 
 namespace Modules\Shared\Domain\Contracts;
 
-interface DomainObject
-{
-}
+interface DomainObject {}

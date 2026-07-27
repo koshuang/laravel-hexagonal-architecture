@@ -10,8 +10,7 @@ class Money extends ValueObject implements Stringable
 {
     public function __construct(
         public int $amount,
-    ) {
-    }
+    ) {}
 
     public function __toString(): string
     {

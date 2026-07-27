@@ -12,7 +12,7 @@ class ActivityTestData
 {
     public static function defaultActivity(): ActivityBuilder
     {
-        return (new ActivityBuilder())
+        return new ActivityBuilder()
             ->withId(new NullActivityId())
             ->withOwnerAccount(new AccountId(42))
             ->withSourceAccount(new AccountId(42))

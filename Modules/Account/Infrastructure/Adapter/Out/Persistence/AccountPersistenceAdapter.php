@@ -17,8 +17,7 @@ class AccountPersistenceAdapter implements LoadAccountPort, UpdateAccountStatePo
     public function __construct(
         private readonly AccountMapper $accountMapper,
         private readonly ActivityRepository $activityRepository,
-    ) {
-    }
+    ) {}
 
     public function loadAccount(AccountId $accountId, Carbon $baselineDate): Account
     {

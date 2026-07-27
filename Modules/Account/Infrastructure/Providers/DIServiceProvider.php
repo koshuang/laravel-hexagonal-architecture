@@ -10,6 +10,7 @@ use Modules\Account\Application\Port\Out\UpdateAccountStatePort;
 use Modules\Account\Application\Services\NoOpAccountLock;
 use Modules\Account\Application\Services\SendMoneyService;
 use Modules\Account\Infrastructure\Adapter\Out\Persistence\AccountPersistenceAdapter;
+use Override;
 
 class DIServiceProvider extends ServiceProvider
 {
@@ -18,10 +19,9 @@ class DIServiceProvider extends ServiceProvider
      *
      * Register any model bindings or pattern based filters.
      */
-    public function boot(): void
-    {
-    }
+    public function boot(): void {}
 
+    #[Override]
     public function register(): void
     {
         // NOTE: because use cases will depend on out ports, out ports need register first

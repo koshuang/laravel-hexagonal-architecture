@@ -15,7 +15,7 @@ use Modules\Account\Infrastructure\Adapter\Out\Persistence\Factories\AccountMode
  * @property int $id
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- * @property-read Collection<int, \Modules\Account\Infrastructure\Adapter\Out\Persistence\Models\ActivityModel> $activityModels
+ * @property-read Collection<int, ActivityModel> $activityModels
  * @property-read int|null $activity_models_count
  * @method static \Modules\Account\Infrastructure\Adapter\Out\Persistence\Factories\AccountModelFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|AccountModel newModelQuery()

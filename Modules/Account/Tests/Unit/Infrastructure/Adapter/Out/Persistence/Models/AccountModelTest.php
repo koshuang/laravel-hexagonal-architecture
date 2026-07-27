@@ -9,6 +9,9 @@ use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
+/**
+ * @internal
+ */
 #[CoversNothing]
 class AccountModelTest extends TestCase
 {

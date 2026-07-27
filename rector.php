@@ -13,7 +13,7 @@ return static function (RectorConfig $rectorConfig): void {
         __DIR__ . '/bootstrap/app.php',
         __DIR__ . '/config',
         __DIR__ . '/database',
-        __DIR__ . '/packages',
+
         __DIR__ . '/public',
         __DIR__ . '/resources',
         __DIR__ . '/routes',
@@ -27,7 +27,7 @@ return static function (RectorConfig $rectorConfig): void {
 
     // define sets of rules
     $rectorConfig->sets([
-        LevelSetList::UP_TO_PHP_83,
+        LevelSetList::UP_TO_PHP_85,
     ]);
 
     $rectorConfig->skip([
