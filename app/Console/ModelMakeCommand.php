@@ -35,14 +35,6 @@ class ModelMakeCommand extends ParentModelMakeCommand
         ];
     }
 
-    /**
-     * @return mixed|string
-     */
-    private function getModelName()
-    {
-        return Str::studly($this->argument('model'));
-    }
-
     protected function handleOptionalFactoryOption(): void
     {
         if ($this->option('factory') === true) {
@@ -53,5 +45,13 @@ class ModelMakeCommand extends ParentModelMakeCommand
                 'module' => $this->argument('module'),
             ]));
         }
+    }
+
+    /**
+     * @return mixed|string
+     */
+    private function getModelName()
+    {
+        return Str::studly($this->argument('model'));
     }
 }

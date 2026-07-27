@@ -9,6 +9,7 @@ use Modules\Account\Application\Port\In\SendMoneyUseCase;
 use Modules\Account\Application\Port\Out\AccountLock;
 use Modules\Account\Application\Port\Out\LoadAccountPort;
 use Modules\Account\Application\Port\Out\UpdateAccountStatePort;
+use Modules\Account\Domain\Entities\Account;
 
 class SendMoneyService implements SendMoneyUseCase
 {
@@ -24,18 +25,36 @@ class SendMoneyService implements SendMoneyUseCase
     {
         $this->checkThreshold($command);
 
+        $sourceAccount = $this->loadSourceAccount($command);
+        $targetAccount = $this->loadTargetAccount($command);
+
+        $this->validateAccounts($sourceAccount, $targetAccount);
+
+        return $this->processTransfer($sourceAccount, $targetAccount, $command);
+    }
+
+    private function loadSourceAccount(SendMoneyCommand $command): Account
+    {
         $baselineDate = Carbon::now()->addDays(-10);
 
-        $sourceAccount = $this->loadAccountPort->loadAccount(
+        return $this->loadAccountPort->loadAccount(
             $command->sourceAccountId,
             $baselineDate,
         );
+    }
 
-        $targetAccount = $this->loadAccountPort->loadAccount(
+    private function loadTargetAccount(SendMoneyCommand $command): Account
+    {
+        $baselineDate = Carbon::now()->addDays(-10);
+
+        return $this->loadAccountPort->loadAccount(
             $command->targetAccountId,
             $baselineDate,
         );
+    }
 
+    private function validateAccounts(Account $sourceAccount, Account $targetAccount): void
+    {
         if ($sourceAccount->id->isNull()) {
             throw new Exception('expected source account ID not to be empty');
         }
@@ -43,7 +62,10 @@ class SendMoneyService implements SendMoneyUseCase
         if ($targetAccount->id->isNull()) {
             throw new Exception('expected target account ID not to be empty');
         }
+    }
 
+    private function processTransfer(Account $sourceAccount, Account $targetAccount, SendMoneyCommand $command): bool
+    {
         $sourceAccountId = $sourceAccount->id;
         $targetAccountId = $targetAccount->id;
 
@@ -74,7 +96,7 @@ class SendMoneyService implements SendMoneyUseCase
     private function checkThreshold(SendMoneyCommand $command): void
     {
         if ($command->money->isGreaterThan($this->moneyTransferProperties->getMaximumTransferThreshold())) {
-            throw new ThresholdExceededException($this->moneyTransferProperties->getMaximumTransferThreshold(), $command->money);
+            throw new ThresholdExceeded($this->moneyTransferProperties->getMaximumTransferThreshold(), $command->money);
         }
     }
 }

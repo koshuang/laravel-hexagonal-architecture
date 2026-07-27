@@ -5,7 +5,7 @@ namespace Modules\Account\Application\Services;
 use Modules\Account\Domain\ValueObjects\Money;
 use RuntimeException;
 
-class ThresholdExceededException extends RuntimeException
+class ThresholdExceeded extends RuntimeException
 {
     public function __construct(Money $threshold, Money $actual)
     {

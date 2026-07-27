@@ -18,16 +18,16 @@ abstract class AggregateRoot extends Entity
         $this->domainEvents = [];
     }
 
-    protected function addDomainEvent(DomainEvent $domainEvent): void
-    {
-        $this->domainEvents[] = $domainEvent;
-    }
-
     /**
      * @return array<int, DomainEvent>
      */
     public function getDomainEvents(): array
     {
         return $this->domainEvents;
+    }
+
+    protected function addDomainEvent(DomainEvent $domainEvent): void
+    {
+        $this->domainEvents[] = $domainEvent;
     }
 }

@@ -18,9 +18,6 @@ class ActivityWindow implements DomainObject
      */
     public readonly Collection $activities;
 
-    /**
-     * @param  Activity  ...$activities
-     */
     public function __construct(Activity ...$activities)
     {
         /** @var Collection<int, Activity> $activitiesCollection */
