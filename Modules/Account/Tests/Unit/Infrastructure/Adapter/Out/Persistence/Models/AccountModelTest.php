@@ -5,13 +5,11 @@ namespace Modules\Account\Tests\Unit\Infrastructure\Adapter\Out\Persistence\Mode
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Modules\Account\Infrastructure\Adapter\Out\Persistence\Models\AccountModel;
 use Modules\Account\Infrastructure\Adapter\Out\Persistence\Models\ActivityModel;
+use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
-/**
- * @internal
- * @coversNothing
- */
+#[CoversNothing]
 class AccountModelTest extends TestCase
 {
     use RefreshDatabase;

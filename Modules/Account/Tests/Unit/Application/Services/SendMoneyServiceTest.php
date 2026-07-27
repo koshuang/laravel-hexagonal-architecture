@@ -16,13 +16,11 @@ use Modules\Account\Domain\Entities\Account;
 use Modules\Account\Domain\ValueObjects\AccountId;
 use Modules\Account\Domain\ValueObjects\Money;
 use Modules\Account\Tests\Common\ActivityTestData;
+use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
-/**
- * @internal
- * @coversNothing
- */
+#[CoversNothing]
 class SendMoneyServiceTest extends TestCase
 {
     /** @var MockInterface|LoadAccountPort */

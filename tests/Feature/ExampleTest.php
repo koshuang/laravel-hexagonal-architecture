@@ -3,12 +3,10 @@
 namespace Tests\Feature;
 
 // use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\CoversNothing;
 use Tests\TestCase;
 
-/**
- * @internal
- * @coversNothing
- */
+#[CoversNothing]
 class ExampleTest extends TestCase
 {
     /**

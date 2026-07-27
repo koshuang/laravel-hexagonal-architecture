@@ -8,13 +8,11 @@ use Modules\Account\Domain\ValueObjects\AccountId;
 use Modules\Account\Domain\ValueObjects\Money;
 use Modules\Account\Tests\Common\AccountTestData;
 use Modules\Account\Tests\Common\ActivityTestData;
+use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
-/**
- * @internal
- * @coversNothing
- */
+#[CoversNothing]
 class AccountTest extends TestCase
 {
     #[Test]

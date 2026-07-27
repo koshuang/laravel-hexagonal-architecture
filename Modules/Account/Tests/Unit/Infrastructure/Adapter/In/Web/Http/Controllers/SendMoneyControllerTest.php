@@ -9,13 +9,11 @@ use Modules\Account\Application\Port\In\SendMoneyCommand;
 use Modules\Account\Application\Port\In\SendMoneyUseCase;
 use Modules\Account\Domain\ValueObjects\AccountId;
 use Modules\Account\Domain\ValueObjects\Money;
+use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
-/**
- * @internal
- * @coversNothing
- */
+#[CoversNothing]
 class SendMoneyControllerTest extends TestCase
 {
     use WithoutMiddleware;
