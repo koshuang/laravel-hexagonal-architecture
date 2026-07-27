@@ -19,7 +19,7 @@ class ActivityRepository
         ])->get();
     }
 
-    public function getDepositBalanceUntil(int|string $accountId, Carbon $until): int
+    public function getWithdrawalBalanceUntil(int|string $accountId, Carbon $until): int
     {
         return ActivityModel::where([
             ['owner_account_id', $accountId],
@@ -28,7 +28,7 @@ class ActivityRepository
         ])->sum('amount');
     }
 
-    public function getWithdrawalBalanceUntil(int|string $accountId, Carbon $until): int
+    public function getDepositBalanceUntil(int|string $accountId, Carbon $until): int
     {
         return ActivityModel::where([
             ['owner_account_id', $accountId],

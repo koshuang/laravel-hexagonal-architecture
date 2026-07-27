@@ -29,12 +29,12 @@ class AccountPersistenceAdapter implements LoadAccountPort, UpdateAccountStatePo
             $baselineDate,
         );
 
-        $withdrawalBalance = $this->activityRepository->getDepositBalanceUntil(
+        $withdrawalBalance = $this->activityRepository->getWithdrawalBalanceUntil(
             $accountId->value,
             $baselineDate,
         );
 
-        $depositBalance = $this->activityRepository->getWithdrawalBalanceUntil(
+        $depositBalance = $this->activityRepository->getDepositBalanceUntil(
             $accountId->value,
             $baselineDate,
         );
