@@ -14,7 +14,7 @@ class ModelMakeCommand extends ParentModelMakeCommand
         return parent::handle();
     }
 
-    protected function getDestinationFilePath(): mixed
+    protected function getDestinationFilePath(): string
     {
         $path = $this->laravel['modules']->getModulePath($this->getModuleName());
 

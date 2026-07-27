@@ -8,6 +8,7 @@ use Modules\Account\Domain\ValueObjects\AccountId;
 use Modules\Account\Domain\ValueObjects\Money;
 use Modules\Account\Tests\Common\AccountTestData;
 use Modules\Account\Tests\Common\ActivityTestData;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 /**
@@ -16,9 +17,7 @@ use Tests\TestCase;
  */
 class AccountTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function calculates_balance(): void
     {
         $accountId = new AccountId(1);
@@ -42,9 +41,7 @@ class AccountTest extends TestCase
         $this->assertEquals(Money::of(1555), $balance);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function withdrawal_succeeds(): void
     {
         $accountId = new AccountId(1);
@@ -70,9 +67,7 @@ class AccountTest extends TestCase
         $this->assertEquals(Money::of(1000), $account->calculateBalance());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function withdrawal_failure(): void
     {
         $accountId = new AccountId(1);
@@ -98,9 +93,7 @@ class AccountTest extends TestCase
         $this->assertEquals(Money::of(1555), $account->calculateBalance());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function deposit_success(): void
     {
         $accountId = new AccountId(1);

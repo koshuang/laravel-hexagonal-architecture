@@ -16,6 +16,7 @@ use Modules\Account\Domain\Entities\Account;
 use Modules\Account\Domain\ValueObjects\AccountId;
 use Modules\Account\Domain\ValueObjects\Money;
 use Modules\Account\Tests\Common\ActivityTestData;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 /**
@@ -51,9 +52,7 @@ class SendMoneyServiceTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function given_withdrawal_fails_then_only_source_account_is_locked_and_released(): void
     {
         $sourceAccountId = new AccountId(41);
@@ -80,9 +79,7 @@ class SendMoneyServiceTest extends TestCase
         $this->assertFalse($success);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function transaction_succeeds(): void
     {
         $sourceAccount = $this->givenSourceAccount();

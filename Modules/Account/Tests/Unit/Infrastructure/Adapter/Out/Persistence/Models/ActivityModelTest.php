@@ -5,6 +5,7 @@ namespace Modules\Account\Tests\Unit\Infrastructure\Adapter\Out\Persistence\Mode
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Modules\Account\Infrastructure\Adapter\Out\Persistence\Models\AccountModel;
 use Modules\Account\Infrastructure\Adapter\Out\Persistence\Models\ActivityModel;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 /**
@@ -28,7 +29,7 @@ class ActivityModelTest extends TestCase
         ]);
     }
 
-    /** @test */
+    #[Test]
     public function properties(): void
     {
         $this->assertNotNull($this->activity->id);
@@ -38,7 +39,7 @@ class ActivityModelTest extends TestCase
         $this->assertNotNull($this->activity->amount);
     }
 
-    /** @test */
+    #[Test]
     public function relations(): void
     {
         $this->assertEquals($this->account->id, $this->activity->account?->id);

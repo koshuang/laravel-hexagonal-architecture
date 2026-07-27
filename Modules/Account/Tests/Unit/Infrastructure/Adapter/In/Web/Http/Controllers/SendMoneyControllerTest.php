@@ -9,6 +9,7 @@ use Modules\Account\Application\Port\In\SendMoneyCommand;
 use Modules\Account\Application\Port\In\SendMoneyUseCase;
 use Modules\Account\Domain\ValueObjects\AccountId;
 use Modules\Account\Domain\ValueObjects\Money;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 /**
@@ -19,9 +20,7 @@ class SendMoneyControllerTest extends TestCase
 {
     use WithoutMiddleware;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function send_money(): void
     {
         $sourceAccountId = 41;

@@ -7,6 +7,7 @@ use Modules\Account\Domain\ActivityWindow;
 use Modules\Account\Domain\ValueObjects\AccountId;
 use Modules\Account\Domain\ValueObjects\Money;
 use Modules\Account\Tests\Common\ActivityTestData;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 /**
@@ -15,9 +16,7 @@ use Tests\TestCase;
  */
 class ActivityWindowTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function calculates_start_timestamp(): void
     {
         $window = new ActivityWindow(
@@ -29,9 +28,7 @@ class ActivityWindowTest extends TestCase
         $this->assertEquals($this->startDate(), $window->getStartTimestamp());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function calculates_end_timestamp(): void
     {
         $window = new ActivityWindow(
@@ -43,9 +40,7 @@ class ActivityWindowTest extends TestCase
         $this->assertEquals($this->endDate(), $window->getEndTimestamp());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function calculates_balance(): void
     {
         $account1 = new AccountId(1);

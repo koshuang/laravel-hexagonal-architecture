@@ -14,6 +14,7 @@ use Modules\Account\Infrastructure\Adapter\Out\Persistence\Models\AccountModel;
 use Modules\Account\Infrastructure\Adapter\Out\Persistence\Models\ActivityModel;
 use Modules\Account\Tests\Common\AccountTestData;
 use Modules\Account\Tests\Common\ActivityTestData;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 /**
@@ -33,7 +34,7 @@ class AccountPersistenceAdapterTest extends TestCase
         $this->adapterUnderTest = app(AccountPersistenceAdapter::class);
     }
 
-    /** @test */
+    #[Test]
     public function loads_account(): void
     {
         $this->prepareForLoadsAccount();
@@ -45,7 +46,7 @@ class AccountPersistenceAdapterTest extends TestCase
         $this->assertEquals(600, $accountEntity->calculateBalance()->amount);
     }
 
-    /** @test */
+    #[Test]
     public function updates_activities(): void
     {
         $sourceAccountModel = AccountModel::factory()->create();

@@ -12,6 +12,7 @@ use Modules\Account\Domain\ValueObjects\AccountId;
 use Modules\Account\Domain\ValueObjects\Money;
 use Modules\Account\Infrastructure\Adapter\Out\Persistence\Models\AccountModel;
 use Modules\Account\Infrastructure\Adapter\Out\Persistence\Models\ActivityModel;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 /**
@@ -47,9 +48,7 @@ class SendMoneyTest extends TestCase
         $this->targetAccountId = AccountModel::factory()->create()->id;
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function send_money(): void
     {
         $initialSourceBalance = $this->sourceAccount()->calculateBalance();
