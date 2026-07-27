@@ -2,13 +2,16 @@
 
 namespace Modules\Shared\Domain\Contracts;
 
-/** @template T */
+/**
+ * @template T
+ * @extends Entity<T>
+ */
 abstract class AggregateRoot extends Entity
 {
     /**
      * @var array<int, DomainEvent>
      */
-    public readonly array $domainEvents;
+    private array $domainEvents = [];
 
     public function clearEvents(): void
     {
@@ -18,5 +21,13 @@ abstract class AggregateRoot extends Entity
     protected function addDomainEvent(DomainEvent $domainEvent): void
     {
         $this->domainEvents[] = $domainEvent;
+    }
+
+    /**
+     * @return array<int, DomainEvent>
+     */
+    public function getDomainEvents(): array
+    {
+        return $this->domainEvents;
     }
 }

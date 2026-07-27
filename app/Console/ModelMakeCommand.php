@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Support\Str;
 use Nwidart\Modules\Commands\Make\ModelMakeCommand as ParentModelMakeCommand;
+use Nwidart\Modules\Contracts\RepositoryInterface;
 use Nwidart\Modules\Support\Config\GenerateConfigReader;
 use Symfony\Component\Console\Input\InputOption;
 
@@ -16,7 +17,8 @@ class ModelMakeCommand extends ParentModelMakeCommand
 
     protected function getDestinationFilePath(): string
     {
-        $path = $this->laravel['modules']->getModulePath($this->getModuleName());
+        $modules = $this->laravel->make(RepositoryInterface::class);
+        $path = $modules->getModulePath($this->getModuleName());
 
         $modelPath = GenerateConfigReader::read('model');
 

@@ -20,7 +20,7 @@ class AccountServiceProvider extends ServiceProvider
     /**
      * Boot the application events.
      */
-    public function boot()
+    public function boot(): void
     {
         $this->registerTranslations();
         $this->registerConfig();
@@ -47,7 +47,7 @@ class AccountServiceProvider extends ServiceProvider
     /**
      * Register views.
      */
-    public function registerViews()
+    public function registerViews(): void
     {
         $viewPath = resource_path('views/modules/' . $this->moduleNameLower);
 
@@ -63,7 +63,7 @@ class AccountServiceProvider extends ServiceProvider
     /**
      * Register translations.
      */
-    public function registerTranslations()
+    public function registerTranslations(): void
     {
         $langPath = resource_path('lang/modules/' . $this->moduleNameLower);
 
@@ -79,9 +79,9 @@ class AccountServiceProvider extends ServiceProvider
     /**
      * Get the services provided by the provider.
      *
-     * @return array
+     * @return array<int, string>
      */
-    public function provides()
+    public function provides(): array
     {
         return [];
     }
@@ -89,7 +89,7 @@ class AccountServiceProvider extends ServiceProvider
     /**
      * Register config.
      */
-    protected function registerConfig()
+    protected function registerConfig(): void
     {
         $this->publishes([
             module_path($this->moduleName, 'Infrastructure/Config/config.php') => config_path($this->moduleNameLower . '.php'),
@@ -100,6 +100,9 @@ class AccountServiceProvider extends ServiceProvider
         );
     }
 
+    /**
+     * @return array<int, string>
+     */
     private function getPublishableViewPaths(): array
     {
         $paths = [];

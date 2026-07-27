@@ -5,6 +5,7 @@ namespace Modules\Shared\Domain\Contracts;
 use Stringable;
 
 /** @immutable */
+/** @extends ValueObject<int|string> */
 abstract class Identity extends ValueObject implements Nullable, Stringable
 {
     /** @var int|string */

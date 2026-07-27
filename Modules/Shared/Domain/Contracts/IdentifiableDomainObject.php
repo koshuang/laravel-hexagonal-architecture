@@ -12,12 +12,11 @@ abstract class IdentifiableDomainObject implements DomainObject
      */
     public $id;
 
-    public function equals(IdentifiableDomainObject $entity)
+    /**
+     * @param IdentifiableDomainObject<T> $entity
+     */
+    public function equals(self $entity): bool
     {
-        if (! $entity) {
-            return false;
-        }
-
         if ($this === $entity) {
             return true;
         }

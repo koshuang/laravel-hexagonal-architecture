@@ -14,16 +14,19 @@ class ActivityWindow implements DomainObject
     /**
      * The list of account activities within this window.
      *
-     * @var Collection<Activity>
+     * @var Collection<int, Activity>
      */
     public readonly Collection $activities;
 
     /**
-     * @param  Activity<Activity>  ...$activities
+     * @param  Activity  ...$activities
      */
     public function __construct(Activity ...$activities)
     {
-        $this->activities = collect($activities);
+        /** @var Collection<int, Activity> $activitiesCollection */
+        $activitiesCollection = new Collection($activities);
+
+        $this->activities = $activitiesCollection;
     }
 
     public function addActivity(Activity $activity): void

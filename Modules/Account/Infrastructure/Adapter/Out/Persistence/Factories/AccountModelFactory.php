@@ -5,6 +5,7 @@ namespace Modules\Account\Infrastructure\Adapter\Out\Persistence\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Account\Infrastructure\Adapter\Out\Persistence\Models\AccountModel;
 
+/** @extends Factory<AccountModel> */
 class AccountModelFactory extends Factory
 {
     /**
@@ -17,9 +18,9 @@ class AccountModelFactory extends Factory
     /**
      * Define the model's default state.
      *
-     * @return array
+     * @return array<string, mixed>
      */
-    public function definition()
+    public function definition(): array
     {
         return [
         ];

@@ -5,6 +5,7 @@ namespace Modules\Account\Domain\ValueObjects;
 use Modules\Shared\Domain\Contracts\ValueObject;
 use Stringable;
 
+/** @extends ValueObject<self> */
 class Money extends ValueObject implements Stringable
 {
     public function __construct(

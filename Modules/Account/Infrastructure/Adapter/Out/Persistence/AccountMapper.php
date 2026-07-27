@@ -16,7 +16,7 @@ use Modules\Account\Infrastructure\Adapter\Out\Persistence\Models\ActivityModel;
 class AccountMapper
 {
     /**
-     * @param  Collection<ActivityModel>  $activityModels
+     * @param  Collection<int, ActivityModel>  $activityModels
      */
     public function mapToDomainEntity(
         AccountModel $accountModel,
@@ -37,7 +37,7 @@ class AccountMapper
     }
 
     /**
-     * @param  Collection<ActivityModel>  $activityModels
+     * @param  Collection<int, ActivityModel>  $activityModels
      */
     public function mapToActivityWindow(Collection $activityModels): ActivityWindow
     {

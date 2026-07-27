@@ -10,7 +10,7 @@ class AccountDatabaseSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run()
+    public function run(): void
     {
         Model::unguard();
 

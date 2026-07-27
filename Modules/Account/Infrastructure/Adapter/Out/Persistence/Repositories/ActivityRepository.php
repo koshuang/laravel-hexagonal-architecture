@@ -9,7 +9,7 @@ use Modules\Account\Infrastructure\Adapter\Out\Persistence\Models\ActivityModel;
 class ActivityRepository
 {
     /**
-     * @return Collection<ActivityModel>
+     * @return Collection<int, ActivityModel>
      */
     public function findByOwnerSince(int|string $ownerAccountId, Carbon $since): Collection
     {
@@ -21,7 +21,7 @@ class ActivityRepository
 
     public function getWithdrawalBalanceUntil(int|string $accountId, Carbon $until): int
     {
-        return ActivityModel::where([
+        return (int) ActivityModel::where([
             ['owner_account_id', $accountId],
             ['source_account_id', $accountId],
             ['created_at', '<', $until->toDateTimeString()],
@@ -30,7 +30,7 @@ class ActivityRepository
 
     public function getDepositBalanceUntil(int|string $accountId, Carbon $until): int
     {
-        return ActivityModel::where([
+        return (int) ActivityModel::where([
             ['owner_account_id', $accountId],
             ['target_account_id', $accountId],
             ['created_at', '<', $until->toDateTimeString()],

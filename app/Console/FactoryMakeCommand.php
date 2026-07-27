@@ -4,13 +4,15 @@ namespace App\Console;
 
 use Illuminate\Support\Str;
 use Nwidart\Modules\Commands\Make\FactoryMakeCommand as ParentFactoryMakeCommand;
+use Nwidart\Modules\Contracts\RepositoryInterface;
 use Nwidart\Modules\Support\Config\GenerateConfigReader;
 
 class FactoryMakeCommand extends ParentFactoryMakeCommand
 {
-    protected function getDestinationFilePath()
+    protected function getDestinationFilePath(): string
     {
-        $path = $this->laravel['modules']->getModulePath($this->getModuleName());
+        $modules = $this->laravel->make(RepositoryInterface::class);
+        $path = $modules->getModulePath($this->getModuleName());
 
         $factoryPath = GenerateConfigReader::read('factory');
 

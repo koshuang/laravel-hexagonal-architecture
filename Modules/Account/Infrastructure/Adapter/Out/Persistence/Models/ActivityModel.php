@@ -19,6 +19,7 @@ use Modules\Account\Infrastructure\Adapter\Out\Persistence\Factories\ActivityMod
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read AccountModel|null $account
+ * @property-read int|null $activity_models_count
  * @method static \Modules\Account\Infrastructure\Adapter\Out\Persistence\Factories\ActivityModelFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|ActivityModel newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ActivityModel newQuery()
@@ -27,12 +28,16 @@ use Modules\Account\Infrastructure\Adapter\Out\Persistence\Factories\ActivityMod
  */
 class ActivityModel extends Model
 {
+    /** @use HasFactory<ActivityModelFactory> */
     use HasFactory;
 
     protected $table = 'activities';
 
     protected $guarded = [];
 
+    /**
+     * @return BelongsTo<AccountModel, $this>
+     */
     public function account(): BelongsTo
     {
         return $this->belongsTo(AccountModel::class, 'owner_account_id', 'id');
