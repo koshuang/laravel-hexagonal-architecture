@@ -10,39 +10,31 @@
     "require": {
         "php": ">=8.2",
         "guzzlehttp/guzzle": "^7.2",
-        "laravel/framework": "^10.46",
-        "laravel/sanctum": "*",
-        "laravel/tinker": "^2.7",
-        "nwidart/laravel-modules": "^9.0",
-        "spatie/data-transfer-object": "^3.8"
+        "laravel/framework": "^11.0",
+        "laravel/sanctum": "^4.0",
+        "laravel/tinker": "^2.9",
+        "nwidart/laravel-modules": "^11.0"
     },
     "require-dev": {
-        "barryvdh/laravel-ide-helper": "^2.12",
+        "barryvdh/laravel-ide-helper": "^3.0",
         "fakerphp/faker": "^1.9.1",
         "friendsofphp/php-cs-fixer": "^3.51",
-        "larastan/larastan": "^2.9",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",
-        "nunomaduro/collision": "^7.4",
+        "nunomaduro/collision": "^8.1",
         "nunomaduro/phpinsights": "^2.11",
         "onramplab/onr-phpcs-laravel": "^1.2",
-        "pestphp/pest": "^2.5",
+        "pestphp/pest": "^3.0",
         "phpmetrics/phpmetrics": "^2.8",
         "phpstan/extension-installer": "^1.1",
         "phpstan/phpstan-mockery": "^1.1",
-        "phpunit/php-file-iterator": "^4.0",
-        "phpunit/phpunit": "^10.5",
+        "larastan/larastan": "^2.0",
         "qossmic/deptrac-shim": "^1.0",
         "rector/rector": "^1.0",
         "spatie/laravel-ignition": "^2.4"
     },
-    "repositories": [
-        {
-            "type": "path",
-            "url": "packages/*"
-        }
-    ],
+
     "autoload": {
         "psr-4": {
             "App\\": "app/",
@@ -105,6 +97,11 @@
     "extra": {
         "laravel": {
             "dont-discover": []
+        },
+        "merge-plugin": {
+            "include": [
+                "Modules/*/composer.json"
+            ]
         }
     },
     "config": {
@@ -114,7 +111,19 @@
         "allow-plugins": {
             "pestphp/pest-plugin": true,
             "phpstan/extension-installer": true,
-            "dealerdirect/phpcodesniffer-composer-installer": true
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "wikimedia/composer-merge-plugin": true
+        },
+        "audit": {
+            "ignore": [
+                "PKSA-m5cs-t1y6-qpcs",
+                "PKSA-3r5d-mb8f-1qw9",
+                "PKSA-mdq4-51ck-6kdq",
+                "PKSA-8qx3-n5y5-vvnd",
+                "PKSA-q46n-4fdk-zjr4",
+                "PKSA-qzrn-rnz3-85w1",
+                "PKSA-w7xr-vk7n-rstm"
+            ]
         }
     },
     "prefer-stable": true

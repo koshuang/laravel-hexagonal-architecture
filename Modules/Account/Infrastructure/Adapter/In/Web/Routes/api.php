@@ -14,4 +14,4 @@ use Modules\Account\Infrastructure\Adapter\In\Web\Http\Controllers\SendMoneyCont
 |
 */
 
-Route::post('/accounts/send/{sourceAccountId}/{targetAccountId}/{amount}', (new SendMoneyController())->sendMoney(...));
+Route::post('/accounts/send/{sourceAccountId}/{targetAccountId}/{money}', [SendMoneyController::class, 'sendMoney']);

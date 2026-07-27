@@ -3,7 +3,7 @@
 namespace App\Console;
 
 use Illuminate\Support\Str;
-use Nwidart\Modules\Commands\FactoryMakeCommand as ParentFactoryMakeCommand;
+use Nwidart\Modules\Commands\Make\FactoryMakeCommand as ParentFactoryMakeCommand;
 use Nwidart\Modules\Support\Config\GenerateConfigReader;
 
 class FactoryMakeCommand extends ParentFactoryMakeCommand

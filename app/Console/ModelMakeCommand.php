@@ -3,7 +3,7 @@
 namespace App\Console;
 
 use Illuminate\Support\Str;
-use Nwidart\Modules\Commands\ModelMakeCommand as ParentModelMakeCommand;
+use Nwidart\Modules\Commands\Make\ModelMakeCommand as ParentModelMakeCommand;
 use Nwidart\Modules\Support\Config\GenerateConfigReader;
 use Symfony\Component\Console\Input\InputOption;
 
@@ -11,13 +11,7 @@ class ModelMakeCommand extends ParentModelMakeCommand
 {
     public function handle(): int
     {
-        if (parent::handle() === E_ERROR) {
-            return E_ERROR;
-        }
-
-        $this->handleOptionalFactoryOption();
-
-        return 0;
+        return parent::handle();
     }
 
     protected function getDestinationFilePath(): mixed
@@ -47,7 +41,7 @@ class ModelMakeCommand extends ParentModelMakeCommand
         return Str::studly($this->argument('model'));
     }
 
-    private function handleOptionalFactoryOption(): void
+    protected function handleOptionalFactoryOption(): void
     {
         if ($this->option('factory') === true) {
             $factoryName = "{$this->getModelName()}";
