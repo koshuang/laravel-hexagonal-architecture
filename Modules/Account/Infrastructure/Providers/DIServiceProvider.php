@@ -2,7 +2,6 @@
 
 namespace Modules\Account\Infrastructure\Providers;
 
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
 use Modules\Account\Application\Port\In\SendMoneyUseCase;
 use Modules\Account\Application\Port\Out\AccountLock;
@@ -30,13 +29,13 @@ class DIServiceProvider extends ServiceProvider
 
     protected function injectUseCases(): void
     {
-        App::instance(SendMoneyUseCase::class, app(SendMoneyService::class));
+        $this->app->instance(SendMoneyUseCase::class, $this->app->make(SendMoneyService::class));
     }
 
     protected function injectOutPorts(): void
     {
-        App::instance(LoadAccountPort::class, app(AccountPersistenceAdapter::class));
-        App::instance(UpdateAccountStatePort::class, app(AccountPersistenceAdapter::class));
-        App::instance(AccountLock::class, app(NoOpAccountLock::class));
+        $this->app->instance(LoadAccountPort::class, $this->app->make(AccountPersistenceAdapter::class));
+        $this->app->instance(UpdateAccountStatePort::class, $this->app->make(AccountPersistenceAdapter::class));
+        $this->app->instance(AccountLock::class, $this->app->make(NoOpAccountLock::class));
     }
 }
