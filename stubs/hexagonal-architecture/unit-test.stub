@@ -2,18 +2,15 @@
 
 namespace $NAMESPACE$;
 
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class $CLASS$ extends TestCase
 {
-    /**
-     * A basic unit test example.
-     *
-     * @return void
-     */
-    public function testExample()
+    #[Test]
+    public function that_true_is_true(): void
     {
         $this->assertTrue(true);
     }

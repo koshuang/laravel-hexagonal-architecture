@@ -15,10 +15,10 @@ return [
     |
     */
 
-    'stateful' => explode(',', (string) env('SANCTUM_STATEFUL_DOMAINS', sprintf(
+    'stateful' => explode(',', env('SANCTUM_STATEFUL_DOMAINS', sprintf(
         '%s%s',
         'localhost,localhost:3000,127.0.0.1,127.0.0.1:8000,::1',
-        Sanctum::currentApplicationUrlWithPort()
+        Sanctum::currentApplicationUrlWithPort(),
     ))),
 
     /*
@@ -47,6 +47,19 @@ return [
     */
 
     'expiration' => null,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Token Prefix
+    |--------------------------------------------------------------------------
+    |
+    | Sanctum can prefix new tokens in order to take advantage of numerous
+    | security scanning initiatives maintained by open source platforms
+    | that notify developers if they commit tokens into repositories.
+    |
+    */
+
+    'token_prefix' => env('SANCTUM_TOKEN_PREFIX', ''),
 
     /*
     |--------------------------------------------------------------------------

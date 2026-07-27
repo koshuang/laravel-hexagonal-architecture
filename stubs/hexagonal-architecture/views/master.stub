@@ -1,19 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Module $STUDLY_NAME$</title>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-       {{-- Laravel Mix - CSS File --}}
-       {{-- <link rel="stylesheet" href="{{ mix('css/$LOWER_NAME$.css') }}"> --}}
+        <title>$STUDLY_NAME$ Module</title>
 
+        <meta name="description" content="{{ $description ?? '' }}">
+        <meta name="keywords" content="{{ $keywords ?? '' }}">
+        <meta name="author" content="{{ $author ?? '' }}">
+
+        {{-- Vite CSS --}}
+        {{-- {{ module_vite('build-$LOWER_NAME$', 'resources/assets/sass/app.scss') }} --}}
     </head>
     <body>
-        @yield('content')
+        {{ $slot }}
 
-        {{-- Laravel Mix - JS File --}}
-        {{-- <script src="{{ mix('js/$LOWER_NAME$.js') }}"></script> --}}
+        {{-- Vite JS --}}
+        {{-- {{ module_vite('build-$LOWER_NAME$', 'resources/assets/js/app.js') }} --}}
     </body>
 </html>
