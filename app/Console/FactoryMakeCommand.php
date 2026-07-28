@@ -21,11 +21,8 @@ class FactoryMakeCommand extends ParentFactoryMakeCommand
         return $path . $factoryPath->getPath() . '/' . $this->getFileName();
     }
 
-    /**
-     * @return string
-     */
-    private function getFileName()
+    private function getFileName(): string
     {
-        return Str::studly($this->argument('name')) . 'ModelFactory.php';
+        return Str::studly((string) $this->argument('name')) . 'ModelFactory.php';
     }
 }
