@@ -24,10 +24,8 @@ class AccountMapper
         int $withdrawalBalance,
         int $depositBalance,
     ): Account {
-        $baselineBalance = Money::subtract(
-            Money::of($depositBalance),
-            Money::of($withdrawalBalance),
-        );
+        $baselineBalance = Money::of($depositBalance)
+            |> (fn (Money $m) => Money::subtract($m, Money::of($withdrawalBalance)));
 
         return Account::withId(
             new AccountId($accountModel->id),
