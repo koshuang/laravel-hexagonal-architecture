@@ -3,6 +3,9 @@ parameters:
     paths:
         - app
         - Modules
+        - routes
+        - database/factories
+        - database/seeders
         - tests
 
     level: 9

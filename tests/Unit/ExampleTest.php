@@ -14,8 +14,9 @@ class ExampleTest extends TestCase
     /**
      * A basic test example.
      */
-    public function test_that_true_is_true()
+    public function test_that_true_is_true(): void
     {
+        // @phpstan-ignore-next-line scaffold test placeholder
         $this->assertTrue(true);
     }
 }

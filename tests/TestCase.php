@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Support\Facades\App;
 
 /**
- * @method  App  $app
+ * @method \Illuminate\Foundation\Application app()
  */
 abstract class TestCase extends BaseTestCase
 {

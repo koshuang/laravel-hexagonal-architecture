@@ -33,11 +33,11 @@ class ActivityModelTest extends TestCase
     #[Test]
     public function properties(): void
     {
-        $this->assertNotNull($this->activity->id);
-        $this->assertNotNull($this->activity->owner_account_id);
-        $this->assertNotNull($this->activity->source_account_id);
-        $this->assertNotNull($this->activity->target_account_id);
-        $this->assertNotNull($this->activity->amount);
+        $this->assertGreaterThan(0, $this->activity->id);
+        $this->assertGreaterThan(0, $this->activity->owner_account_id);
+        $this->assertGreaterThan(0, $this->activity->source_account_id);
+        $this->assertGreaterThan(0, $this->activity->target_account_id);
+        $this->assertGreaterThan(0, $this->activity->amount);
     }
 
     #[Test]

@@ -33,7 +33,7 @@ class AccountModelTest extends TestCase
     #[Test]
     public function properties(): void
     {
-        $this->assertNotNull($this->account->id);
+        $this->assertGreaterThan(0, $this->account->id);
     }
 
     #[Test]

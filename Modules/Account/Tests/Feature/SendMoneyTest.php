@@ -74,6 +74,7 @@ class SendMoneyTest extends TestCase
         );
     }
 
+    /** @phpstan-ignore-next-line TestResponse generic type not resolved */
     private function whenSendMoney(
         AccountId $sourceAccountId,
         AccountId $targetAccountId,
