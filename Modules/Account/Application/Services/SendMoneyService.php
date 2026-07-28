@@ -18,7 +18,8 @@ class SendMoneyService implements SendMoneyUseCase
         private readonly LoadAccountPort $loadAccountPort,
         private readonly UpdateAccountStatePort $updateAccountStatePort,
         private readonly AccountLock $accountLock,
-    ) {}
+    ) {
+    }
 
     public function sendMoney(SendMoneyCommand $command): bool
     {

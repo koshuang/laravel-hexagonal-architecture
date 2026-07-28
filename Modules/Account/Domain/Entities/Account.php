@@ -33,7 +33,8 @@ class Account extends AggregateRoot
          * The window of latest activities on this account.
          */
         public readonly ActivityWindow $activityWindow,
-    ) {}
+    ) {
+    }
 
     /**
      * Creates an {@link Account} entity without an ID. Use to create a new entity that is not yet

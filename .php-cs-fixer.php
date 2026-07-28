@@ -43,5 +43,6 @@ return $config->setRules([
         ],
         'not_operator_with_successor_space' => true,
         'new_with_braces' => ['anonymous_class' => false],
+        'single_line_empty_body' => false,
     ])
     ->setFinder($finder);

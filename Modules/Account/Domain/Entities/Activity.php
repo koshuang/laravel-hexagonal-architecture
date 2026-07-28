@@ -40,5 +40,6 @@ class Activity extends LocalEntity
          * The money that was transferred between the accounts.
          */
         public readonly Money $money,
-    ) {}
+    ) {
+    }
 }

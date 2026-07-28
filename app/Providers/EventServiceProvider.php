@@ -24,7 +24,9 @@ class EventServiceProvider extends ServiceProvider
      * Register any events for your application.
      */
     #[Override]
-    public function boot(): void {}
+    public function boot(): void
+    {
+    }
 
     /**
      * Determine if events and listeners should be automatically discovered.

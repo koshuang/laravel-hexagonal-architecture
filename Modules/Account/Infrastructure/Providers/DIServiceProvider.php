@@ -19,7 +19,9 @@ class DIServiceProvider extends ServiceProvider
      *
      * Register any model bindings or pattern based filters.
      */
-    public function boot(): void {}
+    public function boot(): void
+    {
+    }
 
     #[Override]
     public function register(): void
