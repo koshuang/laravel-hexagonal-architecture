@@ -8,8 +8,7 @@ use Stringable;
 /** @extends ValueObject<int|string> */
 abstract class Identity extends ValueObject implements Nullable, Stringable
 {
-    /** @var int|string */
-    public $value;
+    public private(set) int|string $value;
 
     /**
      * @param  int|string  $value
