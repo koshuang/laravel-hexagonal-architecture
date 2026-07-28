@@ -2,6 +2,7 @@
 
 namespace Modules\Account\Infrastructure\Adapter\Out\Persistence\Models;
 
+use Illuminate\Database\Eloquent\Attributes\Table;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -26,12 +27,11 @@ use Modules\Account\Infrastructure\Adapter\Out\Persistence\Factories\ActivityMod
  * @method static \Illuminate\Database\Eloquent\Builder|ActivityModel query()
  * @mixin \Eloquent
  */
+#[Table('activities')]
 class ActivityModel extends Model
 {
     /** @use HasFactory<ActivityModelFactory> */
     use HasFactory;
-
-    protected $table = 'activities';
 
     protected $guarded = [];
 

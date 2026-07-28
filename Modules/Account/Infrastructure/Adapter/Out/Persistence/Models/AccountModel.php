@@ -2,6 +2,7 @@
 
 namespace Modules\Account\Infrastructure\Adapter\Out\Persistence\Models;
 
+use Illuminate\Database\Eloquent\Attributes\Table;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -23,12 +24,11 @@ use Modules\Account\Infrastructure\Adapter\Out\Persistence\Factories\AccountMode
  * @method static \Illuminate\Database\Eloquent\Builder|AccountModel query()
  * @mixin \Eloquent
  */
+#[Table('accounts')]
 class AccountModel extends Model
 {
     /** @use HasFactory<AccountModelFactory> */
     use HasFactory;
-
-    protected $table = 'accounts';
 
     protected $guarded = [];
 

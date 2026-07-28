@@ -3,6 +3,7 @@ parameters:
     paths:
         - app
         - Modules
+        - tests
 
     level: 9
 
@@ -11,7 +12,6 @@ parameters:
 
     excludePaths:
         analyse:
-            - ./*/*/Tests/*.php
             - ./_ide_helper.php
             - ./.phpstorm.meta.php (?)
             - ./phpinsights.php
