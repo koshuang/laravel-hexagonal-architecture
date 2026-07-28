@@ -17,7 +17,7 @@ class SendMoneyController extends Controller
      * Display a listing of the resource.
      */
     public function sendMoney(
-        Request $request,
+        Request $_request,
         SendMoneyUseCase $sendMoneyUseCase,
         int $sourceAccountId,
         int $targetAccountId,

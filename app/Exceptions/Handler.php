@@ -40,8 +40,6 @@ class Handler extends ExceptionHandler
     #[Override]
     public function register(): void
     {
-        $this->reportable(function (Throwable $e): void
-        {
-        });
+        $this->reportable(function (Throwable $_e): void {});
     }
 }

@@ -131,6 +131,10 @@ return [
                 'lang',
             ],
         ],
+        SlevomatCodingStandard\Sniffs\Files\LineLengthSniff::class => [
+            'lineLimit' => 200,
+            'absoluteLineLimit' => 200,
+        ],
         SlevomatCodingStandard\Sniffs\Functions\FunctionLengthSniff::class => [
             'maxLength' => 80,
         ],

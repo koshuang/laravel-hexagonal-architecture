@@ -12,9 +12,9 @@ class Kernel extends ConsoleKernel
      * Define the application's command schedule.
      */
     #[Override]
-    protected function schedule(Schedule $schedule)
+    protected function schedule(Schedule $_schedule): void
     {
-        // $schedule->command('inspire')->hourly();
+        // $_schedule->command('inspire')->hourly();
     }
 
     /**
