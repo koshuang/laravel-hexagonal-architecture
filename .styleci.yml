@@ -1,5 +1,5 @@
 preset: laravel
-version: 8.1
+version: 8.4
 finder:
   not-name:
     - "*.blade.php"

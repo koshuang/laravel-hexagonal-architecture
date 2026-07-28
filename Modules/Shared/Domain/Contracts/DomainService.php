@@ -2,4 +2,6 @@
 
 namespace Modules\Shared\Domain\Contracts;
 
-interface DomainService {}
+interface DomainService
+{
+}

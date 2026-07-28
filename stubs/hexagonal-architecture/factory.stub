@@ -9,17 +9,13 @@ class $NAME$ModelFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
-     *
-     * @var class-string<$NAME$Model> $model
      */
     protected $model = $NAME$Model::class;
 
     /**
      * Define the model's default state.
-     *
-     * @return array
      */
-    public function definition()
+    public function definition(): array
     {
         return [
             //

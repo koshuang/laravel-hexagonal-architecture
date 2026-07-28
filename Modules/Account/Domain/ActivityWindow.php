@@ -36,8 +36,12 @@ class ActivityWindow implements DomainObject
      */
     public function getStartTimestamp(): Carbon
     {
-        return $this->activities
+        $timestamp = $this->activities
             ->min(fn (Activity $a) => $a->timestamp);
+
+        assert($timestamp instanceof Carbon);
+
+        return $timestamp;
     }
 
     /**
@@ -45,8 +49,12 @@ class ActivityWindow implements DomainObject
      */
     public function getEndTimestamp(): Carbon
     {
-        return $this->activities
+        $timestamp = $this->activities
             ->max(fn (Activity $a) => $a->timestamp);
+
+        assert($timestamp instanceof Carbon);
+
+        return $timestamp;
     }
 
     /**

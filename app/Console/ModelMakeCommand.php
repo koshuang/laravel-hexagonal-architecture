@@ -6,8 +6,8 @@ use Illuminate\Support\Str;
 use Nwidart\Modules\Commands\Make\ModelMakeCommand as ParentModelMakeCommand;
 use Nwidart\Modules\Contracts\RepositoryInterface;
 use Nwidart\Modules\Support\Config\GenerateConfigReader;
-use Symfony\Component\Console\Input\InputOption;
 use Override;
+use Symfony\Component\Console\Input\InputOption;
 
 class ModelMakeCommand extends ParentModelMakeCommand
 {
