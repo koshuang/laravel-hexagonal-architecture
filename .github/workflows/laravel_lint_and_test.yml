@@ -33,7 +33,7 @@ jobs:
       run: php artisan key:generate
 
     - name: Run phpcs
-      run: tools/scripts/phpstan-all-files.sh
+      run: composer phpcs
 
     - name: Run phpinsights
       run: vendor/bin/phpinsights --no-interaction
