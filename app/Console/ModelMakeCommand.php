@@ -52,11 +52,8 @@ class ModelMakeCommand extends ParentModelMakeCommand
         }
     }
 
-    /**
-     * @return mixed|string
-     */
-    private function getModelName()
+    private function getModelName(): string
     {
-        return Str::studly($this->argument('model'));
+        return Str::studly((string) $this->argument('model'));
     }
 }

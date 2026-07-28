@@ -3,7 +3,7 @@
 namespace Modules\Shared\Domain\Contracts;
 
 /**
- * @template T
+ * @template T of Identity
  */
 abstract class IdentifiableDomainObject implements DomainObject
 {

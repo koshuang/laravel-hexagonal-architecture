@@ -108,7 +108,10 @@ class AccountServiceProvider extends ServiceProvider
     private function getPublishableViewPaths(): array
     {
         $paths = [];
-        foreach (Config::get('view.paths') as $path) {
+
+        /** @var array<int, string> $viewPaths */
+        $viewPaths = Config::get('view.paths', []);
+        foreach ($viewPaths as $path) {
             if (is_dir($path . '/modules/' . $this->moduleNameLower)) {
                 $paths[] = $path . '/modules/' . $this->moduleNameLower;
             }
