@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Modules\Account\Infrastructure\Adapter\In\Web\Http\Controllers\AccountController;
 use Modules\Account\Infrastructure\Adapter\In\Web\Http\Controllers\SendMoneyController;
 
 /*
@@ -15,3 +16,6 @@ use Modules\Account\Infrastructure\Adapter\In\Web\Http\Controllers\SendMoneyCont
 */
 
 Route::post('/accounts/send/{sourceAccountId}/{targetAccountId}/{money}', [SendMoneyController::class, 'sendMoney']);
+Route::get('/accounts', [AccountController::class, 'index']);
+Route::post('/accounts', [AccountController::class, 'store']);
+Route::get('/accounts/{id}', [AccountController::class, 'show']);

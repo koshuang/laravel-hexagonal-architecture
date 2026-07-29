@@ -1,0 +1,28 @@
+{
+    "compilerOptions": {
+        "target": "ES2022",
+        "module": "ES2022",
+        "moduleResolution": "bundler",
+        "strict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "exactOptionalPropertyTypes": false,
+        "noFallthroughCasesInSwitch": true,
+        "forceConsistentCasingInFileNames": true,
+        "skipLibCheck": true,
+        "isolatedModules": true,
+        "esModuleInterop": true,
+        "outDir": "./public/build/",
+        "rootDir": "./Modules/Account/Infrastructure/Adapter/In/Web/Resources/assets/ts/",
+        "baseUrl": "./Modules/Account/Infrastructure/Adapter/In/Web/Resources/assets/ts/",
+        "paths": {
+            "@domain/*": ["domain/*"],
+            "@application/*": ["application/*"],
+            "@infrastructure/*": ["infrastructure/*"],
+            "@shared/*": ["shared/*"]
+        }
+    },
+    "include": [
+        "Modules/Account/Infrastructure/Adapter/In/Web/Resources/assets/ts/**/*.ts"
+    ]
+}

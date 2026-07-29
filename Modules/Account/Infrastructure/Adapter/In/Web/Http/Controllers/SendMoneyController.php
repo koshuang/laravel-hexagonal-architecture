@@ -23,7 +23,7 @@ class SendMoneyController extends Controller
         int $targetAccountId,
         int $money,
     ): JsonResponse {
-        $sendMoneyUseCase->sendMoney(
+        $success = $sendMoneyUseCase->sendMoney(
             new SendMoneyCommand(
                 sourceAccountId: new AccountId($sourceAccountId),
                 targetAccountId: new AccountId($targetAccountId),
@@ -31,6 +31,6 @@ class SendMoneyController extends Controller
             ),
         );
 
-        return Response::json([]);
+        return Response::json(['success' => $success]);
     }
 }

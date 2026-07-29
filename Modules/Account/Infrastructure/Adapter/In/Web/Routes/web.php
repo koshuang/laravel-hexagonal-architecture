@@ -13,6 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('account')->group(function () {
-    Route::get('/', 'AccountController@index');
+Route::get('/app', function () {
+    return view('account::app');
 });
