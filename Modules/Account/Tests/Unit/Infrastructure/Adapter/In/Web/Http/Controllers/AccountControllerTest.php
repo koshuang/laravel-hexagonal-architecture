@@ -482,4 +482,109 @@ class AccountControllerTest extends TestCase
         $response->assertStatus(200);
         $response->assertJson(['success' => true]);
     }
+
+    #[Test]
+    public function multiple_transfers_have_no_id_collision(): void
+    {
+        $source = AccountModel::factory()->create();
+        $target = AccountModel::factory()->create();
+
+        // Give source account $5000
+        ActivityModel::factory()->in()->create([
+            'owner_account_id' => $source->id,
+            'target_account_id' => $source->id,
+            'amount' => 5000,
+        ]);
+
+        // Perform 3 transfers — each creates new activities with NullActivityId
+        // Each transfer's success is asserted individually for fast failure diagnosis
+        $this->json('POST', "/api/accounts/send/{$source->id}/{$target->id}/100")
+            ->assertJson(['success' => true]);
+        $this->json('POST', "/api/accounts/send/{$source->id}/{$target->id}/200")
+            ->assertJson(['success' => true]);
+        $this->json('POST', "/api/accounts/send/{$source->id}/{$target->id}/300")
+            ->assertJson(['success' => true]);
+
+        // === Verify activity integrity ===
+
+        // All activities: 1 seed + 3 source withdrawals + 3 target deposits = 7
+        $allActivities = ActivityModel::all();
+        $this->assertCount(7, $allActivities, 'Should have 1 seed + 3 withdrawals + 3 deposits');
+
+        // All IDs must be unique (no collision/overwrite)
+        $this->assertEquals(
+            $allActivities->count(),
+            $allActivities->pluck('id')->unique()->count(),
+            'All activity IDs must be unique — no record overwriting',
+        );
+
+        // Source account should have 3 outgoing activities
+        $sourceOutgoing = ActivityModel::where('owner_account_id', $source->id)
+            ->where('source_account_id', $source->id)
+            ->count();
+        $this->assertEquals(3, $sourceOutgoing, 'Source should have 3 outgoing activities');
+
+        // Target account should have 3 incoming activities
+        $targetIncoming = ActivityModel::where('owner_account_id', $target->id)
+            ->where('target_account_id', $target->id)
+            ->count();
+        $this->assertEquals(3, $targetIncoming, 'Target should have 3 incoming activities');
+
+        // === Verify correct balances via API ===
+
+        // Source balance: 5000 - 100 - 200 - 300 = 4400
+        $sourceDetail = $this->json('GET', "/api/accounts/{$source->id}");
+        $sourceDetail->assertStatus(200);
+        $this->assertEquals(4400, $sourceDetail->json('data.balance'), 'Source balance should be 5000 - 600 = 4400');
+
+        // Target balance: 100 + 200 + 300 = 600
+        $targetDetail = $this->json('GET', "/api/accounts/{$target->id}");
+        $targetDetail->assertStatus(200);
+        $this->assertEquals(600, $targetDetail->json('data.balance'), 'Target balance should be 100 + 200 + 300 = 600');
+
+        // === Verify that each transfer created exactly 2 activities ===
+        // Source's activities (excluding seed): all outgoing
+        $sourceActivities = $sourceDetail->json('data.activities');
+        $this->assertIsArray($sourceActivities);
+
+        // We should see 4 activities: 1 incoming seed + 3 outgoing transfers
+        $this->assertCount(4, $sourceActivities, 'Source should show seed + 3 outgoing activities');
+
+        $outgoingCount = 0;
+        $incomingCount = 0;
+
+        /** @var array<string, mixed> $activity */
+        foreach ($sourceActivities as $activity) {
+            if ($activity['type'] === 'outgoing') {
+                ++$outgoingCount;
+            }
+            if ($activity['type'] === 'incoming') {
+                ++$incomingCount;
+            }
+        }
+        $this->assertEquals(3, $outgoingCount, 'Source should show 3 outgoing transfers');
+        $this->assertEquals(1, $incomingCount, 'Source should show 1 incoming seed');
+
+        // Target's activities: all incoming
+        $targetActivities = $targetDetail->json('data.activities');
+        $this->assertIsArray($targetActivities);
+        $this->assertCount(3, $targetActivities, 'Target should show 3 incoming transfers');
+
+        /** @var array<string, mixed> $activity */
+        foreach ($targetActivities as $activity) {
+            $this->assertEquals('incoming', $activity['type']);
+        }
+
+        // Also verify the exact amounts of each outgoing transfer
+        $outgoingAmounts = [];
+
+        /** @var array<string, mixed> $activity */
+        foreach ($sourceActivities as $activity) {
+            if ($activity['type'] === 'outgoing') {
+                $outgoingAmounts[] = $activity['amount'];
+            }
+        }
+        sort($outgoingAmounts);
+        $this->assertEquals([100, 200, 300], $outgoingAmounts, 'Outgoing amounts should match transfers');
+    }
 }

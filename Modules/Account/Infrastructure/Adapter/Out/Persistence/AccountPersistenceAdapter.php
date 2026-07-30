@@ -3,6 +3,7 @@
 namespace Modules\Account\Infrastructure\Adapter\Out\Persistence;
 
 use Carbon\Carbon;
+use Illuminate\Support\Arr;
 use Modules\Account\Application\Port\Out\LoadAccountPort;
 use Modules\Account\Application\Port\Out\UpdateAccountStatePort;
 use Modules\Account\Domain\Entities\Account;
@@ -50,11 +51,18 @@ class AccountPersistenceAdapter implements LoadAccountPort, UpdateAccountStatePo
     public function updateActivities(Account $account): void
     {
         $account->activityWindow->activities->each(function (Activity $activity) {
-            $attributes = collect($this->accountMapper->mapToModel($activity)->toArray())->except(['id']);
-            ActivityModel::updateOrCreate(
-                $activity->id->isNull() ? [] : ['id' => $activity->id->value],
-                $attributes->toArray(),
-            );
+            $attributes = $this->accountMapper->mapToModel($activity)->toArray();
+
+            if ($activity->id->isNull()) {
+                // New activity (no ID yet): always create a fresh record
+                ActivityModel::create(Arr::except($attributes, ['id']));
+            } else {
+                // Existing activity: update or create by known ID
+                ActivityModel::updateOrCreate(
+                    ['id' => $attributes['id']],
+                    Arr::except($attributes, ['id']),
+                );
+            }
         });
     }
 }
