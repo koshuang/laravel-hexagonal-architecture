@@ -1063,19 +1063,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/koshuang/laravel-hexagonal.git",
-                "reference": "1f2af263c55b068cb9e00c0b6f426c261d5b5103"
+                "reference": "bd92d610666e0dbc50ae39d64444992e2aad8c40"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/koshuang/laravel-hexagonal/zipball/1f2af263c55b068cb9e00c0b6f426c261d5b5103",
-                "reference": "1f2af263c55b068cb9e00c0b6f426c261d5b5103",
+                "url": "https://api.github.com/repos/koshuang/laravel-hexagonal/zipball/bd92d610666e0dbc50ae39d64444992e2aad8c40",
+                "reference": "bd92d610666e0dbc50ae39d64444992e2aad8c40",
                 "shasum": ""
             },
             "require": {
                 "illuminate/console": "^13.0",
                 "illuminate/filesystem": "^13.0",
                 "illuminate/support": "^13.0",
-                "nwidart/laravel-modules": "^13.0",
                 "php": "^8.4",
                 "symfony/process": "^7.4|^8.0"
             },
@@ -1084,6 +1083,7 @@
                 "larastan/larastan": "^3.0",
                 "mockery/mockery": "^1.6",
                 "nunomaduro/phpinsights": "^2.14",
+                "nwidart/laravel-modules": "^13.0",
                 "onramplab/onr-phpcs-laravel": "^1.2",
                 "orchestra/testbench": "^11.0",
                 "phpmd/phpmd": "^2.15",
@@ -1173,7 +1173,7 @@
                 "issues": "https://github.com/koshuang/laravel-hexagonal/issues",
                 "source": "https://github.com/koshuang/laravel-hexagonal"
             },
-            "time": "2026-08-02T18:54:40+00:00"
+            "time": "2026-08-02T23:53:59+00:00"
         },
         {
             "name": "laravel/framework",
