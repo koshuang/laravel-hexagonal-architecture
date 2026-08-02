@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "775e30837f6033e90c7f58346fa5666d",
+    "content-hash": "025a13b712fdd68484d977bfe54b26e5",
     "packages": [
         {
             "name": "brick/math",
@@ -1056,6 +1056,124 @@
                 }
             ],
             "time": "2026-07-17T13:53:03+00:00"
+        },
+        {
+            "name": "koshuang/laravel-hexagonal",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/koshuang/laravel-hexagonal.git",
+                "reference": "1f2af263c55b068cb9e00c0b6f426c261d5b5103"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/koshuang/laravel-hexagonal/zipball/1f2af263c55b068cb9e00c0b6f426c261d5b5103",
+                "reference": "1f2af263c55b068cb9e00c0b6f426c261d5b5103",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "^13.0",
+                "illuminate/filesystem": "^13.0",
+                "illuminate/support": "^13.0",
+                "nwidart/laravel-modules": "^13.0",
+                "php": "^8.4",
+                "symfony/process": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "deptrac/deptrac": "^4.7",
+                "larastan/larastan": "^3.0",
+                "mockery/mockery": "^1.6",
+                "nunomaduro/phpinsights": "^2.14",
+                "onramplab/onr-phpcs-laravel": "^1.2",
+                "orchestra/testbench": "^11.0",
+                "phpmd/phpmd": "^2.15",
+                "phpstan/extension-installer": "^1.4",
+                "phpstan/phpstan": "^2.2",
+                "phpstan/phpstan-mockery": "^2.0",
+                "phpunit/phpunit": "^12.5",
+                "rector/rector": "^2.5",
+                "squizlabs/php_codesniffer": "^3.13"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.0.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Koshuang\\LaravelHexagonal\\LaravelHexagonalServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Koshuang\\LaravelHexagonal\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Koshuang\\LaravelHexagonal\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "@php vendor/bin/phpunit"
+                ],
+                "phpstan": [
+                    "@php vendor/bin/phpstan analyse --memory-limit=1G"
+                ],
+                "phpcs": [
+                    "@php vendor/bin/phpcs"
+                ],
+                "phpcs:fix": [
+                    "@php vendor/bin/phpcbf"
+                ],
+                "phpmd": [
+                    "@php vendor/bin/phpmd src text rulesets.xml"
+                ],
+                "deptrac": [
+                    "@php vendor/bin/deptrac analyze --config-file=deptrac.yaml"
+                ],
+                "insights": [
+                    "@php vendor/bin/phpinsights --no-interaction"
+                ],
+                "rector": [
+                    "@php vendor/bin/rector process --dry-run"
+                ],
+                "lint": [
+                    "@php vendor/bin/phpstan analyse --memory-limit=1G",
+                    "@php vendor/bin/phpcs",
+                    "@php vendor/bin/phpmd src text rulesets.xml",
+                    "@php vendor/bin/deptrac analyze --config-file=deptrac.yaml",
+                    "@php vendor/bin/phpinsights --no-interaction",
+                    "@php vendor/bin/rector process --dry-run",
+                    "@php vendor/bin/phpunit"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kos Huang",
+                    "email": "koshuang@gmail.com"
+                }
+            ],
+            "description": "Laravel scaffolding for modular Hexagonal Architecture with Ports and Adapters.",
+            "homepage": "https://github.com/koshuang/laravel-hexagonal",
+            "keywords": [
+                "clean-architecture",
+                "ddd",
+                "hexagonal-architecture",
+                "laravel",
+                "ports-and-adapters"
+            ],
+            "support": {
+                "issues": "https://github.com/koshuang/laravel-hexagonal/issues",
+                "source": "https://github.com/koshuang/laravel-hexagonal"
+            },
+            "time": "2026-08-02T18:54:40+00:00"
         },
         {
             "name": "laravel/framework",
@@ -13224,7 +13342,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": {
+        "koshuang/laravel-hexagonal": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

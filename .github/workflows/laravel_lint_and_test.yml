@@ -23,6 +23,9 @@ jobs:
         php-version: '8.5'
         extensions: mbstring, pdo_mysql, exif, pcntl
 
+    - name: Validate Composer Metadata
+      run: composer validate --strict
+
     - name: Install Composer Dependencies
       run: composer install --no-progress --no-suggest --no-interaction --prefer-dist
 
@@ -41,8 +44,8 @@ jobs:
     - name: Run phpstan
       run: tools/scripts/phpstan-all-files.sh
 
-    - name: Run deptrac
-      run: composer deptrac
+    - name: Validate Hexagonal Architecture
+      run: php artisan hexagonal:validate
 
     - name: Run Laravel Tests
       run: composer test

@@ -128,6 +128,22 @@ npm install
 npx vite build
 ```
 
+### Local Package Development
+
+This demo consumes the public GitHub repository
+`https://github.com/koshuang/laravel-hexagonal` through Composer's VCS repository
+support. The demo currently tracks the package `dev-main` branch.
+
+```bash
+composer update koshuang/laravel-hexagonal --with-dependencies
+php artisan hexagonal:install
+php artisan hexagonal:make-module Example
+php artisan hexagonal:validate
+```
+
+The existing `Account` module remains the reference implementation. The generated
+`Example` module is only a local integration check and should not be committed.
+
 ### Access the SPA
 
 Once the server is running, visit **http://localhost:8000/app**.
