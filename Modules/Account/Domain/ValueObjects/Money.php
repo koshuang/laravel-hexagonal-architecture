@@ -9,7 +9,7 @@ use Stringable;
 class Money extends ValueObject implements Stringable
 {
     public function __construct(
-        public private(set) int $amount,
+        public readonly int $amount,
     ) {
     }
 
