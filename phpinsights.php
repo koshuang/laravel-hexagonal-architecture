@@ -103,7 +103,7 @@ return [
         Fixer\Import\GlobalNamespaceImportFixer::class => ['import_classes' => true, 'import_constants' => true, 'import_functions' => true],
         Fixer\Import\OrderedImportsFixer::class => ['imports_order' => ['class', 'function', 'const'], 'sort_algorithm' => 'none'],
         Fixer\LanguageConstruct\SingleSpaceAfterConstructFixer::class => true,
-        Fixer\Phpdoc\PhpdocAlignFixer::class => ['align' => 'left', 'tags' => [ 'property', 'property-read']],
+        Fixer\Phpdoc\PhpdocAlignFixer::class => ['align' => 'left', 'tags' => ['property', 'property-read']],
         Fixer\Phpdoc\PhpdocTypesOrderFixer::class => [
             'sort_algorithm' => 'none',
             'null_adjustment' => 'none',
@@ -159,7 +159,7 @@ return [
         'min-complexity' => 80,
         'min-architecture' => 80,
         'min-style' => 100,
-//        'disable-security-check' => false,
+        //        'disable-security-check' => false,
     ],
 
     /*

@@ -13,7 +13,7 @@ abstract class IdentifiableDomainObject implements DomainObject
     public $id;
 
     /**
-     * @param IdentifiableDomainObject<T> $entity
+     * @param  IdentifiableDomainObject<T>  $entity
      */
     public function equals(self $entity): bool
     {

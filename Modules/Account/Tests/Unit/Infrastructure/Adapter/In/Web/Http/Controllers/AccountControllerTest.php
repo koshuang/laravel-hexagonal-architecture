@@ -556,10 +556,10 @@ class AccountControllerTest extends TestCase
         /** @var array<string, mixed> $activity */
         foreach ($sourceActivities as $activity) {
             if ($activity['type'] === 'outgoing') {
-                ++$outgoingCount;
+                $outgoingCount++;
             }
             if ($activity['type'] === 'incoming') {
-                ++$incomingCount;
+                $incomingCount++;
             }
         }
         $this->assertEquals(3, $outgoingCount, 'Source should show 3 outgoing transfers');
