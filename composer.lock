@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b95a49a3d30a07b9cc6069c88e53bcae",
+    "content-hash": "08eeec549f1c0e68566beae6ab0f7d77",
     "packages": [
         {
             "name": "brick/math",
@@ -1059,7 +1059,7 @@
         },
         {
             "name": "koshuang/laravel-hexagonal",
-            "version": "dev-main",
+            "version": "v0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/koshuang/laravel-hexagonal.git",
@@ -1094,16 +1094,15 @@
                 "rector/rector": "^2.5",
                 "squizlabs/php_codesniffer": "^3.13"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
-                "branch-alias": {
-                    "dev-main": "1.0.x-dev"
-                },
                 "laravel": {
                     "providers": [
                         "Koshuang\\LaravelHexagonal\\LaravelHexagonalServiceProvider"
                     ]
+                },
+                "branch-alias": {
+                    "dev-main": "1.0.x-dev"
                 }
             },
             "autoload": {
@@ -1111,46 +1110,7 @@
                     "Koshuang\\LaravelHexagonal\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Koshuang\\LaravelHexagonal\\Tests\\": "tests/"
-                }
-            },
-            "scripts": {
-                "test": [
-                    "@php vendor/bin/phpunit"
-                ],
-                "phpstan": [
-                    "@php vendor/bin/phpstan analyse --memory-limit=1G"
-                ],
-                "phpcs": [
-                    "@php vendor/bin/phpcs"
-                ],
-                "phpcs:fix": [
-                    "@php vendor/bin/phpcbf"
-                ],
-                "phpmd": [
-                    "@php vendor/bin/phpmd src text rulesets.xml"
-                ],
-                "deptrac": [
-                    "@php vendor/bin/deptrac analyze --config-file=deptrac.yaml"
-                ],
-                "insights": [
-                    "@php vendor/bin/phpinsights --no-interaction"
-                ],
-                "rector": [
-                    "@php vendor/bin/rector process --dry-run"
-                ],
-                "lint": [
-                    "@php vendor/bin/phpstan analyse --memory-limit=1G",
-                    "@php vendor/bin/phpcs",
-                    "@php vendor/bin/phpmd src text rulesets.xml",
-                    "@php vendor/bin/deptrac analyze --config-file=deptrac.yaml",
-                    "@php vendor/bin/phpinsights --no-interaction",
-                    "@php vendor/bin/rector process --dry-run",
-                    "@php vendor/bin/phpunit"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -13342,9 +13302,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "koshuang/laravel-hexagonal": 20
-    },
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

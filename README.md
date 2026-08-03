@@ -130,9 +130,12 @@ npx vite build
 
 ### Local Package Development
 
-This demo consumes the public GitHub repository
-`https://github.com/koshuang/laravel-hexagonal` through Composer's VCS repository
-support. The demo currently tracks the package `dev-main` branch.
+This demo consumes the published `koshuang/laravel-hexagonal` package from
+Packagist using the stable `^0.1` constraint.
+
+When developing a new package version locally, publish a new package tag before
+updating this demo. A temporary VCS repository can also be used during package
+development, but it is intentionally not part of the demo's normal setup.
 
 ```bash
 composer update koshuang/laravel-hexagonal --with-dependencies

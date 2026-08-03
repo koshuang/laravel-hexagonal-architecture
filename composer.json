@@ -11,7 +11,7 @@
         "php": ">=8.4",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^13.0",
-        "koshuang/laravel-hexagonal": "dev-main",
+        "koshuang/laravel-hexagonal": "^0.1",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^3.0",
         "nwidart/laravel-modules": "^13.0"
@@ -35,14 +35,6 @@
         "rector/rector": "^2.0",
         "spatie/laravel-ignition": "^2.4"
     },
-
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/koshuang/laravel-hexagonal"
-        }
-    ],
-
     "autoload": {
         "psr-4": {
             "App\\": "app/",
