@@ -131,7 +131,7 @@ npx vite build
 ### Local Package Development
 
 This demo consumes the published `koshuang/laravel-hexagonal` package from
-Packagist using the stable `^0.1` constraint.
+Packagist using the stable `^0.2` constraint.
 
 When developing a new package version locally, publish a new package tag before
 updating this demo. A temporary VCS repository can also be used during package
@@ -146,6 +146,27 @@ php artisan hexagonal:validate
 
 The existing `Account` module remains the reference implementation. The generated
 `Example` module is only a local integration check and should not be committed.
+
+### Hexagonal package
+
+This repository is the companion Demo for
+[`koshuang/laravel-hexagonal`](https://github.com/koshuang/laravel-hexagonal),
+which is published on [Packagist](https://packagist.org/packages/koshuang/laravel-hexagonal)
+and installed with the `^0.1` constraint in `composer.json`.
+
+The package provides the reusable architecture setup:
+
+- `hexagonal:install` adds the Shared contracts, Deptrac configuration, Composer autoloading, and required package settings.
+- `hexagonal:make-module` creates a generic Domain, Application, and Infrastructure module scaffold.
+- `hexagonal:validate` runs the architecture dependency check used by CI.
+- `vendor:publish --tag=hexagonal-stubs` publishes package defaults for customization.
+
+The Demo still keeps `stubs/hexagonal-architecture` because those files customize
+`nwidart/laravel-modules` for this application. They include Demo-specific module
+defaults such as frontend assets, views, and Inertia support; they are not a copy
+of the package's generic `hexagonal:make-module` stubs. New projects should use
+the package defaults first and publish/customize them only when their application
+needs a different scaffold.
 
 ### Access the SPA
 
