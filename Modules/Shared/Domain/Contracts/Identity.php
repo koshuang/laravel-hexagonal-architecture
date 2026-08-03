@@ -4,8 +4,10 @@ namespace Modules\Shared\Domain\Contracts;
 
 use Stringable;
 
-/** @immutable */
-/** @extends ValueObject<int|string> */
+/**
+ * @immutable
+ * @extends ValueObject<int|string>
+ */
 abstract class Identity extends ValueObject implements Nullable, Stringable
 {
     public readonly int|string $value;
