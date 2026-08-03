@@ -10,8 +10,12 @@ on:
 
 jobs:
   laravel_lint_and_test:
-    name: Laravel Test and PHPStan
+    name: Laravel Test and PHPStan (PHP ${{ matrix.php }})
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ['8.4', '8.5']
 
     steps:
     - name: Checkout Repository
@@ -20,7 +24,7 @@ jobs:
     - name: Set up PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: '8.5'
+        php-version: ${{ matrix.php }}
         extensions: mbstring, pdo_mysql, exif, pcntl
 
     - name: Validate Composer Metadata

@@ -20,7 +20,7 @@
         "barryvdh/laravel-ide-helper": "^3.0",
         "deptrac/deptrac": "^4.7",
         "fakerphp/faker": "^1.9.1",
-        "friendsofphp/php-cs-fixer": "^3.51",
+        "friendsofphp/php-cs-fixer": "^3.95",
         "larastan/larastan": "^3.0",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.0.1",
