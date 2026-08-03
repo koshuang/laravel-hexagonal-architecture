@@ -5,7 +5,7 @@
 
 A **Laravel 13** implementation of **Hexagonal Architecture** (Ports & Adapters) with full **CI/CD quality enforcement** and a **TypeScript SPA frontend** that mirrors the same clean architecture on the client side.
 
-Built with **PHP 8.4+** (Docker image: PHP 8.5), static analysis at **PHPStan Level 9**, **Deptrac** layer dependency checks, **100/100 PHP Insights** score, and **111 Vitest** frontend tests.
+Built with **PHP 8.4+** (Docker image: PHP 8.4), static analysis at **PHPStan Level 9**, **Deptrac** layer dependency checks, **100/100 PHP Insights** score, and **111 Vitest** frontend tests.
 
 The example domain is a money transfer use case ported from [thombergs/buckpal](https://github.com/thombergs/buckpal) — the companion code for the book [*Get Your Hands Dirty on Clean Architecture*](https://pubhtml5.com/dtiq/edqp).
 
@@ -18,7 +18,7 @@ YouTube Talk: https://www.youtube.com/watch?v=cPH5AiqLQTo&t=1684s
 | Layer | Tool |
 |-------|------|
 | **Framework** | Laravel 13 |
-| **PHP** | ^8.4 (Docker: 8.5) |
+| **PHP** | ^8.4 (Docker: 8.4) |
 | **Modules** | nwidart/laravel-modules ^13 |
 | **Backend Testing** | Pest ^4 (PHPUnit 12) — 47 tests, 179 assertions |
 | **Static Analysis** | PHPStan Level 9 + Larastan |
@@ -190,7 +190,7 @@ Runs all quality tools in sequence:
 | 1. **PHPStan** | `composer phpstan` | Static analysis at Level 9 |
 | 2. **Deptrac** | `composer deptrac` | Layer dependency rules |
 | 3. **PHP Insights** | `composer insights` | Code quality scoring (target: 100/100) |
-| 4. **PHP CS Fixer** | `composer phpcs` | PSR-12 coding style |
+| 4. **PHP coding standards** | `composer phpcs:check` | PHP-CS-Fixer and PHPCS checks |
 | 5. **Tests** | `composer test` | Pest test suite (47 tests, 179 assertions) |
 
 ### Frontend Tests
@@ -211,6 +211,9 @@ docker-compose run --rm app composer deptrac
 
 # Code quality insights
 docker-compose run --rm app vendor/bin/phpinsights --no-interaction
+
+# Check code style without modifying files
+docker-compose run --rm app composer phpcs:check
 
 # Auto-fix code style
 docker-compose run --rm app composer phpcs

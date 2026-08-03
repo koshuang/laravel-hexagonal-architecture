@@ -1,5 +1,5 @@
 ARG PHP_EXTENSIONS="pdo_mysql pdo_sqlite"
-FROM thecodingmachine/php:8.5-v5-slim-apache AS php
+FROM thecodingmachine/php:8.4-v5-slim-apache AS php
 ENV TEMPLATE_PHP_INI=production \
     APACHE_DOCUMENT_ROOT=/var/www/html/public
 

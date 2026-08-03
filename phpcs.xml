@@ -3,7 +3,15 @@
 
     <description>The Laravel Coding Standards</description>
 
-    <rule ref="onr-phpcs-laravel"/>
+    <rule ref="onr-phpcs-laravel">
+        <exclude name="Generic.Debug.ClosureLinter"/>
+        <exclude name="Generic.Debug.CSSLint"/>
+        <exclude name="Generic.Debug.ESLint"/>
+        <exclude name="Generic.Debug.JSHint"/>
+        <exclude name="Generic.Formatting.NoSpaceAfterCast"/>
+        <exclude name="Generic.Functions.CallTimePassByReference"/>
+        <exclude name="MySource.PHP.EvalObjectFactory"/>
+    </rule>
 
     <file>app</file>
     <file>config</file>

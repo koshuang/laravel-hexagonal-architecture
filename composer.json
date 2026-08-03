@@ -74,6 +74,16 @@
         "phpcs": [
             "tools/scripts/phpcs-fix.sh all"
         ],
+        "phpcs:check": [
+            "composer phpcs:fixer",
+            "composer phpcs:standards"
+        ],
+        "phpcs:fixer": [
+            "@php vendor/bin/php-cs-fixer fix --dry-run --diff --config=.php-cs-fixer.php"
+        ],
+        "phpcs:standards": [
+            "@php vendor/bin/phpcs"
+        ],
         "phpcs:pr": [
             "tools/scripts/phpcs-fix.sh pr"
         ],
@@ -85,7 +95,7 @@
             "composer phpstan",
             "composer deptrac",
             "composer insights",
-            "composer phpcs",
+            "composer phpcs:check",
             "composer test"
         ],
         "rector": [

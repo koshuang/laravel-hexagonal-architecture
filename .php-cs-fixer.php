@@ -38,10 +38,14 @@ return $config->setRules([
         'phpdoc_to_comment' => false,
         'php_unit_method_casing' => ['case' => 'snake_case'],
         'global_namespace_import' => ['import_classes' => true, 'import_constants' => true, 'import_functions' => true],
+        'increment_style' => ['style' => 'post'],
         'single_line_comment_style' => [
             'comment_types' => ['asterisk'],
         ],
         'not_operator_with_successor_space' => true,
+        'braces_position' => [
+            'anonymous_classes_opening_brace' => 'next_line_unless_newline_at_signature_end',
+        ],
         'new_with_braces' => ['anonymous_class' => false],
         'single_line_empty_body' => false,
     ])
