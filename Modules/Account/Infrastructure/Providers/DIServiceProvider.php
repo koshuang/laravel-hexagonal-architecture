@@ -7,6 +7,7 @@ use Modules\Account\Application\Port\In\SendMoneyUseCase;
 use Modules\Account\Application\Port\Out\AccountLock;
 use Modules\Account\Application\Port\Out\LoadAccountPort;
 use Modules\Account\Application\Port\Out\UpdateAccountStatePort;
+use Modules\Account\Application\Services\MoneyTransferProperties;
 use Modules\Account\Application\Services\NoOpAccountLock;
 use Modules\Account\Application\Services\SendMoneyService;
 use Modules\Account\Infrastructure\Adapter\Out\Persistence\AccountPersistenceAdapter;
@@ -28,6 +29,7 @@ class DIServiceProvider extends ServiceProvider
     {
         // NOTE: because use cases will depend on out ports, out ports need register first
         $this->injectOutPorts();
+        $this->injectApplicationProperties();
         $this->injectUseCases();
     }
 
@@ -41,5 +43,15 @@ class DIServiceProvider extends ServiceProvider
         $this->app->instance(LoadAccountPort::class, $this->app->make(AccountPersistenceAdapter::class));
         $this->app->instance(UpdateAccountStatePort::class, $this->app->make(AccountPersistenceAdapter::class));
         $this->app->instance(AccountLock::class, $this->app->make(NoOpAccountLock::class));
+    }
+
+    protected function injectApplicationProperties(): void
+    {
+        $threshold = config('account.maximum_transfer_threshold', 1000000);
+
+        $this->app->instance(
+            MoneyTransferProperties::class,
+            new MoneyTransferProperties((int) $threshold),
+        );
     }
 }
