@@ -49,12 +49,12 @@ class DIServiceProvider extends ServiceProvider
     protected function injectApplicationProperties(): void
     {
         $threshold = filter_var(
-            config('account.maximum_transfer_threshold', 1000000),
+            config('transfer.maximum_transfer_threshold', 1000000),
             FILTER_VALIDATE_INT,
         );
 
         if ($threshold === false || $threshold <= 0) {
-            throw new UnexpectedValueException('account.maximum_transfer_threshold must be a positive integer.');
+            throw new UnexpectedValueException('transfer.maximum_transfer_threshold must be a positive integer.');
         }
 
         $this->app->instance(
