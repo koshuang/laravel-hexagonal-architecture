@@ -39,6 +39,12 @@ jobs:
     - name: Generate Application Key
       run: php artisan key:generate
 
+    - name: Lint Configuration Contract
+      run: php artisan config:lint
+
+    - name: Validate Resolved Configuration
+      run: php artisan config:validate
+
     - name: Check PHP-CS-Fixer formatting
       if: matrix.php == '8.4'
       run: composer phpcs:fixer

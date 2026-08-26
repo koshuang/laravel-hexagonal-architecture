@@ -7,10 +7,12 @@ use Modules\Account\Application\Port\In\SendMoneyUseCase;
 use Modules\Account\Application\Port\Out\AccountLock;
 use Modules\Account\Application\Port\Out\LoadAccountPort;
 use Modules\Account\Application\Port\Out\UpdateAccountStatePort;
+use Modules\Account\Application\Services\MoneyTransferProperties;
 use Modules\Account\Application\Services\NoOpAccountLock;
 use Modules\Account\Application\Services\SendMoneyService;
 use Modules\Account\Infrastructure\Adapter\Out\Persistence\AccountPersistenceAdapter;
 use Override;
+use UnexpectedValueException;
 
 class DIServiceProvider extends ServiceProvider
 {
@@ -28,6 +30,7 @@ class DIServiceProvider extends ServiceProvider
     {
         // NOTE: because use cases will depend on out ports, out ports need register first
         $this->injectOutPorts();
+        $this->injectApplicationProperties();
         $this->injectUseCases();
     }
 
@@ -41,5 +44,22 @@ class DIServiceProvider extends ServiceProvider
         $this->app->instance(LoadAccountPort::class, $this->app->make(AccountPersistenceAdapter::class));
         $this->app->instance(UpdateAccountStatePort::class, $this->app->make(AccountPersistenceAdapter::class));
         $this->app->instance(AccountLock::class, $this->app->make(NoOpAccountLock::class));
+    }
+
+    protected function injectApplicationProperties(): void
+    {
+        $threshold = filter_var(
+            config('transfer.maximum_transfer_threshold', 1000000),
+            FILTER_VALIDATE_INT,
+        );
+
+        if ($threshold === false || $threshold <= 0) {
+            throw new UnexpectedValueException('transfer.maximum_transfer_threshold must be a positive integer.');
+        }
+
+        $this->app->instance(
+            MoneyTransferProperties::class,
+            new MoneyTransferProperties($threshold),
+        );
     }
 }
