@@ -7,10 +7,17 @@
         "laravel"
     ],
     "license": "MIT",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/koshuang/laravel-config-guard"
+        }
+    ],
     "require": {
         "php": ">=8.4",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^13.0",
+        "koshuang/laravel-config-guard": "v0.1.0",
         "koshuang/laravel-hexagonal": "^0.2",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^3.0",
