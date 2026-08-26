@@ -12,6 +12,7 @@ use Modules\Account\Application\Services\NoOpAccountLock;
 use Modules\Account\Application\Services\SendMoneyService;
 use Modules\Account\Infrastructure\Adapter\Out\Persistence\AccountPersistenceAdapter;
 use Override;
+use UnexpectedValueException;
 
 class DIServiceProvider extends ServiceProvider
 {
@@ -47,11 +48,18 @@ class DIServiceProvider extends ServiceProvider
 
     protected function injectApplicationProperties(): void
     {
-        $threshold = config('account.maximum_transfer_threshold', 1000000);
+        $threshold = filter_var(
+            config('account.maximum_transfer_threshold', 1000000),
+            FILTER_VALIDATE_INT,
+        );
+
+        if ($threshold === false || $threshold <= 0) {
+            throw new UnexpectedValueException('account.maximum_transfer_threshold must be a positive integer.');
+        }
 
         $this->app->instance(
             MoneyTransferProperties::class,
-            new MoneyTransferProperties((int) $threshold),
+            new MoneyTransferProperties($threshold),
         );
     }
 }
