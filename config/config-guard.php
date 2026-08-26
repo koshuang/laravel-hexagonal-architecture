@@ -8,7 +8,7 @@ return [
     ],
 
     'application_config' => [
-        'config/account.php',
+        'config/transfer.php',
     ],
 
     'env_files' => [
@@ -18,10 +18,10 @@ return [
 
     'required' => [
         'local' => [
-            'account.maximum_transfer_threshold',
+            'transfer.maximum_transfer_threshold',
         ],
         'production' => [
-            'account.maximum_transfer_threshold',
+            'transfer.maximum_transfer_threshold',
         ],
     ],
 ];
