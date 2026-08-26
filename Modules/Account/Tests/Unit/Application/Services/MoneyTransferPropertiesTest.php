@@ -6,6 +6,10 @@ use Modules\Account\Application\Services\MoneyTransferProperties;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 class MoneyTransferPropertiesTest extends TestCase
 {
     #[Test]
